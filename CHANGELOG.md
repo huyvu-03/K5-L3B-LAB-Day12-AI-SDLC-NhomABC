@@ -1,5 +1,14 @@
 # Changelog
 
+## [v1.0.0 / Phase 4 — Contract v1.3] — Phát hành chính thức
+- Nâng `contract_version: "1.3"`, khai báo `bench_cmd` (`python3 -m chonoi.bench`) và `soak_cmd` (`python3 -m chonoi.soak`) trong `game.contract.json`.
+- **Benchmark (`chonoi/bench.py`)**: Đo 30 s sau 3 s làm nóng trên cảnh lặn lõi (seed 42, 1280×720), xuất đủ 5 trường `avg_fps`, `p1_low_fps`, `frames`, `measured_s`, `load_ms` (`docs/proof/phase-4/bench.json`).
+- **Soak 10 Ngày (`chonoi/soak.py`)**: Chạy 10 Ngày liên tục trong 1 tiến trình headless lặp kế hoạch D1–D5 cho D6–D10, `days_completed: 10`, `crashes: 0`, tất định giữa các lần chạy (`docs/proof/phase-4/soak.json`).
+- **Cảnh báo & Trợ năng (`chonoi/web/`)**: 3 cảnh báo dễ nhận biết bằng chữ/biểu tượng (thủy quái gần, oxy cạn, khách sắp giận), chế độ tương phản cao (`H`), và Mở rộng Phụ đề SFX (`C`).
+- **Đóng gói & Tài liệu**: Xác minh chạy từ clone sạch trong ≤ 3 lệnh (`docs/proof/phase-4/m1.md`), bổ sung `LICENSE` (MIT), hoàn thiện `README.md`, `CREDITS.md`, `docs/retro.md`, `docs/verification/phase-4.md`, gắn tag `phase-4` & phát hành GitHub Release `v1.0.0`.
+
+---
+
 ## [Phase 3 — Contract v1.2] — Mùa Nước Nổi (Độ tươi & Kho cá thể)
 ### BREAKING CHANGES
 - **Schema file kho & snapshot (`hold`, `stock`, `gather_end.data.inventory`)**: Thay kho đếm `{"items": {"ca_loc": 1}}` (v1.0/v1.1) bằng **kho cá thể** `{"items": [{"id": "I1", "kind": "ca_loc", "fresh": 100}]}` (kho rỗng: `{"items": []}`). Khi chạy ở `contract_version: "1.2"`, file kho đếm v1.0/v1.1 trả mã thoát **`2`**.

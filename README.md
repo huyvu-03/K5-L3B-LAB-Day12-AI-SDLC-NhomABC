@@ -55,6 +55,12 @@ Ví dụ headless cập bến ngay tick 1 để sinh file kho cho quán. Benchma
 
 Ngoài phần đề yêu cầu, nhóm được **thêm** nhân vật, loài cá/cây, sinh vật, món, bản đồ, cơ chế, câu chuyện, đồ họa, âm nhạc… với ba điều kiện: **không phá phần cố định** (tắt ở headless), ghi mục **"Sáng tạo của nhóm"** trong README của nhóm, và **làm lõi đúng trước**.
 
+### Sáng tạo của nhóm & Mở rộng đã làm
+- **Phụ đề SFX (Mở rộng Ticket-04 — phím `C`)**: Hiển thị phụ đề văn bản theo thời gian thực cho các hiệu ứng âm thanh (hái rau, bắt cá, cảnh báo thủy quái, oxy cạn, phục vụ/trả tiền, mua nâng cấp) kể cả khi tắt âm thanh (`M`). Bằng chứng: [`docs/proof/phase-4/m5.md`](docs/proof/phase-4/m5.md).
+- **Cảnh báo dễ nhận biết & Chế độ tương phản cao (`H`)**: 3 cảnh báo bằng chữ và biểu tượng (thủy quái gần kèm viền tím, oxy sắp cạn, khách sắp giận), tối ưu khả năng quan sát ở chế độ tương phản cao.
+- **Đồ họa & âm thanh thuần chuẩn miền Tây (`chonoi/web/`)**: Ảnh nền pixel-art (`menu_bg.png`, `gather_bg.png`, `quan_bg.png`, `shop_bg.png`), hoạt ảnh Canvas 2D (Út Sen áo bà ba/khăn rằn, cá linh/cá lóc/cá kèo bơi, Cá Sấu Năm Chèo, nhà bè 2 bếp/4 bàn, đèn dây vàng), hiệu ứng âm thanh WebAudio tổng hợp không cần thư viện ngoài (chi tiết nguồn tại [`CREDITS.md`](CREDITS.md)).
+- **Đảm bảo lõi không bị ảnh hưởng**: Toàn bộ phần đồ họa/âm thanh/phụ đề nằm hoàn toàn ở lớp hiển thị `chonoi/web/` và **tắt 100% ở chế độ `headless`**. Bằng chứng lõi vẫn đúng & tất định byte-for-byte: `234 tests OK` (`docs/proof/phase-4/m3-summary.txt`, `docs/proof/phase-4/determinism-p1-p3.txt`).
+
 ## Lịch 3 giờ
 
 | Mốc | Phase | Hạn tag |

@@ -1,7 +1,7 @@
 {
-  "avg_fps": 16319.72,
-  "p1_low_fps": 7837.19,
-  "frames": 48960,
-  "measured_s": 3.0,
-  "load_ms": 0.53
+  "avg_fps": 7648.67,
+  "p1_low_fps": 1025.16,
+  "frames": 229461,
+  "measured_s": 30.0,
+  "load_ms": 0.63
 }
