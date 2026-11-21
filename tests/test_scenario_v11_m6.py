@@ -49,10 +49,17 @@ class ContractV11AndScenarioM6(unittest.TestCase):
 
     def test_day_scenario_valid_and_conflicts_exit_2(self):
         with Workdir() as w:
-            # Hợp lệ theo ví dụ Ticket02 mục 4.3
+            # Hợp lệ (v1.2 kho cá thể)
             sc_ok = write_json(w.path("ok.json"), {
                 "day": {"money": 200, "earned": 200},
-                "gather": {"hold": ["ca_loc", "bong_sung", "keo_neo"], "random_fish": False},
+                "gather": {
+                    "hold": [
+                        {"id": "I1", "kind": "ca_loc", "fresh": 100},
+                        {"id": "I2", "kind": "bong_sung", "fresh": 100},
+                        {"id": "I3", "kind": "keo_neo", "fresh": 100},
+                    ],
+                    "random_fish": False,
+                },
             })
             code, err = run_headless("--mode", "day", "--seed", "1", "--ticks", "0", "--scenario", sc_ok,
                                      "--out", w.path("ok.jsonl"))

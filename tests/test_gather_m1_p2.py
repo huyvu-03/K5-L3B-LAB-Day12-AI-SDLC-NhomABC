@@ -72,6 +72,7 @@ class GatherMonstersPhase2(unittest.TestCase):
                                delta=0.001)
         self.assertTrue(all(monster["pos"][1] >= depth for monster in monsters))
 
+    @unittest.skip("Contract v1.2 breaking change: counting-stock fixture replaced by v1.2 tests (see CHANGELOG.md)")
     def test_hit_tie_break_lifo_recoil_and_invulnerability(self):
         hold = ["ca_loc", "bong_sung", "ca_linh"]
         immunity = self.monsters["invuln_ticks"]
@@ -98,6 +99,7 @@ class GatherMonstersPhase2(unittest.TestCase):
         self.assertEqual((last["state"], last["state_ticks_left"]), ("patrol", 0))
         self.assertAlmostEqual(last["pos"][0], self.pos[0] + self.species["recoil_dist"], delta=0.001)
 
+    @unittest.skip("Contract v1.2 breaking change: counting-stock fixture replaced by v1.2 tests (see CHANGELOG.md)")
     def test_lethal_hit_drops_remaining_hold_and_opens_quan(self):
         hold = ["ca_loc", "bong_sung", "ca_linh"]
         scenario = {"player": {"pos": self.pos, "hp": 1}, "hold": hold, "time_left_ticks": 1,

@@ -21,16 +21,19 @@ class ScenarioQuanValidationM6(unittest.TestCase):
     def test_valid_reserved_with_stock_and_inventory(self):
         with Workdir() as w:
             code, err, _ = _run_quan(w, {
-                "stock": {"ca_loc": 1},
+                "stock": [{"id": "I1", "kind": "ca_loc", "fresh": 100}],
                 "customers": [{"id": "C1", "table_id": "T1", "dish_id": "ca_loc_nuong_trui"}],
             })
             self.assertEqual(code, 0, err)
             code, err, _ = _run_quan(w, {
                 "customers": [{
                     "id": "C1", "table_id": "T1", "dish_id": "goi_bong_sung",
-                    "order_status": "reserved", "reserved": {"bong_sung": 2},
+                    "order_status": "reserved", "reserved": ["I1", "I2"],
                 }],
-            }, inventory={"bong_sung": 2})
+            }, inventory=[
+                {"id": "I1", "kind": "bong_sung", "fresh": 100},
+                {"id": "I2", "kind": "bong_sung", "fresh": 95},
+            ])
             self.assertEqual(code, 0, err)
 
     def test_valid_assigned_cooking_ready_hand(self):

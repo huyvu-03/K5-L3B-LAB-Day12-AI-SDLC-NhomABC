@@ -5,6 +5,11 @@
 - Điều tệ: Khi đổi sang v1.1 (thêm bếp `B2`, 4 bàn `T1–T4`), một số fixture test Phase 1 (tọa độ ngoài mép `B1`, giả định 1 bàn) bị vỡ tạm thời trước khi cập nhật.
 - 1 hành động cho Phase 3: Trước khi đổi kho đếm → kho cá thể (`v1.2`), thống nhất ngay 1 helper đơn vị nguyên `fresh_units = fresh × 240` và giữ adapter tương thích cho đến mốc bật `v1.2` (`M6.4`).
 
+## Phase 3 (nhanh — rút ra từ lần đổi schema kho)
+- Hành động Phase 2 đã áp dụng: Thống nhất `chonoi/freshness.py` (`FRESH_SCALE = 240`) và giữ adapter song song `1.1`/`1.2` giúp `main` chạy xanh suốt quá trình M1–M4 chuyển đổi.
+- Lỗi phát hiện khi bật `v1.2`: Huy (M1) phát hiện CLI với `hold: []` ghi `{"items":{}}` thay vì `{"items":[]}` do `tuning` không chứa `contract_version`; M6 đã sửa triệt để trong `chonoi/contract.py` trước khi gắn tag `phase-3`.
+
+
 ## Phase 4 (cuối)
 - Rà lại hành động Phase 2: đã làm chưa? vì sao?
 - Điều tốt / điều tệ:

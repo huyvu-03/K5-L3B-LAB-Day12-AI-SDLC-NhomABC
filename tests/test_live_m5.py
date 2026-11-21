@@ -89,7 +89,7 @@ class LiveM5Test(unittest.TestCase):
 
             _, _, body1 = _get(base + "/state")
             st1 = json.loads(body1)
-            self.assertEqual(st1["hold"], ["bong_dien_dien"])
+            self.assertEqual([x["kind"] if isinstance(x, dict) else x for x in st1["hold"]], ["bong_dien_dien"])
             self.assertFalse(st1["nodes"][0]["ready"])
 
             with game._lock:
@@ -102,7 +102,8 @@ class LiveM5Test(unittest.TestCase):
 
             _, _, body2 = _get(base + "/state")
             st2 = json.loads(body2)
-            self.assertEqual(st2["hold"], ["bong_dien_dien", "ca_linh", "ca_linh", "ca_linh"])
+            self.assertEqual([x["kind"] if isinstance(x, dict) else x for x in st2["hold"]],
+                             ["bong_dien_dien", "ca_linh", "ca_linh", "ca_linh"])
             self.assertEqual(st2["fish"], [])
             self.assertEqual(st2["player"]["catch_cd_ticks"], 30)
         finally:

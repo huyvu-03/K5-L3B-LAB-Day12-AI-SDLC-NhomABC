@@ -1,0 +1,18 @@
+# M6.3b & M6.4 — Bằng chứng tích hợp v1.2, kho cá thể, kho đếm mã 2 & tất định SHA-256 (Phase 3)
+
+## 1. Smoke bàn giao kho cá thể (gather --inventory-out -> quan --inventory)
+- Seed: 42
+- Inventory v1.2 xuất ra (sau 1 tick hao -0.5/s): {"items":[{"id":"I1","kind":"ca_linh","fresh":99.991667},{"id":"I2","kind":"ca_loc","fresh":99.991667}]}
+- Inventory giỏ rỗng (hold: []): {"items":[]}
+- Từ chối file kho đếm v1.1 (exit code): 2 (yêu cầu: 2)
+- Snapshot tick 0 của quan: {"type":"snapshot","tick":0,"sim_tick":0,"mode":"quan","phase":"quan","phase_tick":0,"state":"playing","time_left_ticks":10800,"money":0,"earned":0,"reputation":3.0,"score":300,"player":{"pos":[8.0,5.0]},"stock":[{"id":"I1","kind":"ca_linh","fresh":99.992},{"id":"I2","kind":"ca_loc","fresh":99.992}],"hand":null,"stoves":[{"id":"B1","pos":[2,8],"state":"idle","dish":null,"cook_ticks_left":0,"ready_ticks":0},{"id":"B2","pos":[5,8],"state":"idle","dish":null,"cook_ticks_left":0,"ready_ticks":0}],"tables":[{"id":"T1","pos":[9,2],"customer_id":null},{"id":"T2","pos":[13,2],"customer_id":null},{"id":"T3","pos":[9,6],"customer_id":null},{"id":"T4","pos":[13,6],"customer_id":null}],"customers":[]}
+- SHA-256 gather: 04996B80A123EC2C35D2B195FB45C31F4EE05F724A55DB9142064E2C8342A9C2 (Match: True)
+- SHA-256 inv:    CA11CCD14F9640BCAFC71E56FDF2C19641374178982888221F290E4C735BF689 (Match: True)
+- SHA-256 quan:   2CEEAB85E529CA0C8A784BD85EEE8DC996C0D98B3831725B0C98E0D63846071B (Match: True)
+
+## 2. Smoke chế độ day ở v1.2 (--mode day --days 1 --ticks 22200)
+- Thời gian chạy thực tế: 0.58s (yêu cầu <= 20s)
+- Dòng end: {"type":"end","ticks":22200,"sim_tick":22200,"mode":"day","state":"finished","reason":"days_complete","money":0,"earned":0,"reputation":3.0,"score":300,"days_completed":1}
+- SHA-256 day_1: DD27E6154ED754305FE721A80D6F21368658A15235A4AE63C9652CFC93375573
+- SHA-256 day_2: DD27E6154ED754305FE721A80D6F21368658A15235A4AE63C9652CFC93375573
+- Match day:     True
