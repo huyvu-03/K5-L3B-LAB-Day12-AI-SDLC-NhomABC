@@ -56,6 +56,8 @@ class GatherSim:
     def __init__(self, tuning, scenario, streams, ids):
         t = tuning["gather"]
         self.t = t
+        if "fish_yield" in self.t and "ca_keo" not in self.t["fish_yield"]:
+            self.t["fish_yield"]["ca_keo"] = 2
         self.rng = streams
         self.ids = ids
         p = scenario.get("player", {})
