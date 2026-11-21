@@ -15,23 +15,41 @@ Cách làm việc kỹ thuật là **tự do** (push thẳng, nhánh + PR, pair,
 
 ## Bắt đầu nhanh (≤ 3 lệnh từ clone sạch)
 
+Trên macOS hoặc Linux, cần Git, Python 3.12 hoặc mới hơn và trình duyệt hỗ trợ Canvas 2D. Game dùng thư viện chuẩn Python. Nếu dùng bản ZIP, giải nén và chạy hai lệnh cuối từ thư mục chứa `game.contract.json`.
+
 ```bash
 git clone https://github.com/huyvu-03/K5-L3B-LAB-Day12-AI-SDLC-NhomABC.git && cd K5-L3B-LAB-Day12-AI-SDLC-NhomABC
 PYTHONPATH=tests:. python3 -m unittest discover -s tests -v        # chạy toàn bộ test bằng 1 lệnh
 python3 -m chonoi.live --mode gather                                # chơi thử buổi sáng (đổi --mode quan cho buổi tối)
 ```
 
+Mở địa chỉ server in ra, mặc định `http://127.0.0.1:8000/`. Dùng `--mode day --days 1` để chơi trọn một ngày.
+
 ### Điều khiển (trên trình duyệt `chonoi.live`)
 - **WASD / Phím mũi tên**: Bơi (buổi sáng `[x, d]`) hoặc đi lại trong quán (buổi tối `[x, z]`).
 - **E**: Tương tác (`interact`) — cập bến hoặc hái rau ở buổi sáng; nấu, bưng hoặc phục vụ ở buổi tối.
 - **Space**: Bắt cá (`catch`) khi đang lặn dưới nước.
 - **R**: Chơi lại từ đầu.
+- **P / Esc**: Tạm dừng hoặc tiếp tục.
+- **M / H / C**: Bật hoặc tắt âm thanh / tương phản cao / phụ đề hiệu ứng.
 
 ### Cách tính điểm & Hợp đồng tích hợp
 - **Điểm số**: `score = earned + 100 × floor(reputation)` (trong đó `earned` là tổng thu gồm tiền món và tiền boa, đơn vị nghìn đồng; `reputation` khởi đầu `3.0`, kẹp trong `[0, 5]`).
 - **Hợp đồng file kho, snapshot & sự kiện**: xem [`docs/contracts/README.md`](docs/contracts/README.md) và kho mẫu [`docs/contracts/inventory.sample.json`](docs/contracts/inventory.sample.json).
 
 Game cần chế độ **headless** theo Test Contract (`python3 -m chonoi.headless --mode gather|quan …`) để được chạy và chấm tự động. **Công nghệ không ràng buộc**: khung Python trong `chonoi/` chỉ là gợi ý, chi tiết ở [`docs/STARTER.md`](docs/STARTER.md).
+
+### Headless, benchmark và soak
+
+```bash
+printf '%s\n' '{"frames":[{"tick":0,"interact":true}]}' > dock-inputs.json
+python3 -m chonoi.headless --mode gather --seed 1 --ticks 1 --inputs dock-inputs.json --out gather.jsonl --inventory-out kho.json
+python3 -m chonoi.headless --mode quan --seed 1 --ticks 600 --inventory kho.json --out quan.jsonl
+python3 -m chonoi.bench --seed 42 --duration 30 --out bench.json
+python3 -m chonoi.soak --seed 7 --days 10 --out soak.json
+```
+
+Ví dụ headless cập bến ngay tick 1 để sinh file kho cho quán. Benchmark hiện tại đo xử lý cảnh bằng Python, gồm tọa độ, lọc đối tượng và mã hóa snapshot. Trường `avg_fps` là số lần xử lý workload này mỗi giây.
 
 ## Tự do sáng tạo
 
