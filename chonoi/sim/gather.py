@@ -183,8 +183,7 @@ class GatherSim:
                 if candidates:
                     candidates.sort(key=lambda item: (item[0], id_key(item[1]["id"])))
                     fish = candidates[0][1]
-                    default_yield = 2 if fish["kind"] == "ca_keo" else 1
-                    yield_count = self.t.get("fish_yield", {}).get(fish["kind"], default_yield)
+                    yield_count = self.t["fish_yield"][fish["kind"]]
                     free_space = self.t["hold_capacity"] - len(self.hold)
                     if free_space >= yield_count:
                         self.hold.extend([fish["kind"]] * yield_count)

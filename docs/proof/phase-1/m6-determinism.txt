@@ -1,0 +1,20 @@
+﻿# M6.4 — Bằng chứng tích hợp & tất định byte-for-byte (Phase 1)
+
+- Seed: 42
+- Scenario gather: docs/proof/phase-1/m2_dock_scenario.json
+- Inputs gather: docs/proof/phase-1/m2_dock_inputs.json
+- Inventory xuất ra: {"items":{"bong_sung":2,"ca_loc":1}}
+- Dòng end quan (600 ticks): {"type":"end","ticks":600,"sim_tick":600,"mode":"quan","state":"playing","reason":"tick_limit","money":0,"earned":0,"reputation":3.0,"score":300}
+
+## So khớp SHA-256 (2 lần chạy độc lập, cùng seed)
+- gather_1.jsonl: 6BC3A907BB1C941BE656463F91009D0644398B32057BEF98BA04103B2EAED8F9
+- gather_2.jsonl: 6BC3A907BB1C941BE656463F91009D0644398B32057BEF98BA04103B2EAED8F9
+- Match gather: True
+
+- inv_1.json: B6BB9D2DA81ECEE69D01FD0860CEF1B54EDFCB140409C250B4EC3BA1E4410B65
+- inv_2.json: B6BB9D2DA81ECEE69D01FD0860CEF1B54EDFCB140409C250B4EC3BA1E4410B65
+- Match inventory: True
+
+- quan_1.jsonl: 6D48978B63CFBA33DC0A4279F407F4A9343CB55AE3620E284F4C3CC765265E19
+- quan_2.jsonl: 6D48978B63CFBA33DC0A4279F407F4A9343CB55AE3620E284F4C3CC765265E19
+- Match quan: True

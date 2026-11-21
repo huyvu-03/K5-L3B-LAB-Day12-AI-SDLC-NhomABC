@@ -12,7 +12,7 @@
 | Phase | Mốc giờ | Hạn tag | Trọng tâm của M4 | Trạng thái |
 |---|---|---|---|---|
 | **Phase 1** | 0:00–1:00 | `phase-1` (1:00) | `sim/quan` (Bếp, Bàn, Bưng, Tiền, Tip, Uy tín, Hết ca) + ghép M3 | ✅ Xong code & 68/68 test (chờ merge PR & tag) |
-| **Phase 2** | 1:00–1:55 | `phase-2` (1:55) | `--mode day`, Shop (`oxygen`/`hp`), Pause 3 mode (+ tùy chọn `burn`) | ⏳ Chờ tag `phase-1` & `M6.1` |
+| **Phase 2** | 1:00–1:55 | `phase-2` (1:55) | `--mode day`, Shop (`oxygen`/`hp`), Pause 3 mode (+ tùy chọn `burn`) | 🟡 Đã xong lõi `ShopSim`/`DaySim`/Pause + 6 unit test (chờ `M6.1`/`M6.2` nối CLI) |
 | **Phase 3** | 1:55–2:30 | `phase-3` (2:30) | *Cập nhật khi mở đề Phase 3* | 🔜 Chưa mở |
 | **Phase 4** | 2:30–3:00 | `phase-4` + `v1.0.0` (3:00) | *Hoàn thiện, đóng gói, tài liệu, demo* | 🔜 Chưa mở |
 
@@ -166,9 +166,9 @@ flowchart LR
 | Ưu tiên | Mã task | Mục tiêu (theo `phase-2-task.md` & `Ticket02.md`) | Phụ thuộc (Chờ) | Ai chờ mình | Trạng thái |
 |---|---|---|---|---|---|
 | **P0 (Làm ngay)** | **P2-M4.1** | Spec/AC cho vòng ngày `day`, Shop (`oxygen`/`hp`), Pause (`paused`/`resumed`) | Không | `P2-M4.2` | Đã xong ✅ (`docs/plan/spec-p2-m4.md`) |
-| **P0 (1:05–1:20)** | **P2-M4.2** | Viết test/scenario cho `day` (1 & nhiều ngày), Shop, Pause ở cả 3 mode | `P2-M4.1`, `M6.1` | `P2-M4.3a` | Chưa xong |
-| **P0 (1:20–1:30)** | **P2-M4.3a** | Code Pause (`runner.py`) ở cả 3 mode + logic Shop (`oxygen`/`hp`, 600 tick) | `P2-M4.2`, `M6.2` | `P2-M4.3b` | Chưa xong |
-| **P0 (1:30–1:38)** | **P2-M4.3b** | Ghép `--mode day` (`day_start → day_plan → gather → quan → shop → ngày kế`), chuyển kho trong bộ nhớ, áp `active_upgrades` từ Ngày kế | `P2-M4.3a`, `M3.3` (Cao) | `P2-M4.4`, `M5.3`, `M6.4` | Chưa xong |
+| **P0 (1:05–1:20)** | **P2-M4.2** | Viết test/scenario cho `day` (1 & nhiều ngày), Shop, Pause ở cả 3 mode | `P2-M4.1`, `M6.1` | `P2-M4.3a` | Đã xong lõi unit test ✅ (bổ sung CLI sau `M6.2`) |
+| **P0 (1:20–1:30)** | **P2-M4.3a** | Code Pause (`runner.py`) ở cả 3 mode + logic Shop (`oxygen`/`hp`, 600 tick) | `P2-M4.2`, `M6.2` | `P2-M4.3b` | Đã xong ✅ (`runner.py`, `shop.py`) |
+| **P0 (1:30–1:38)** | **P2-M4.3b** | Ghép `--mode day` (`day_start → day_plan → gather → quan → shop → ngày kế`), chuyển kho trong bộ nhớ, áp `active_upgrades` từ Ngày kế | `P2-M4.3a`, `M3.3` (Cao) | `P2-M4.4`, `M5.3`, `M6.4` | Đã xong lõi ✅ (`day.py`, chờ `M6.2`/`M3.3` ghép cuối) |
 | **P1 (1:38–1:50)** | **P2-M4.4** | Chạy test `day --days 1` & nhiều ngày (kiểm `oxygen`/`hp` hiệu lực Ngày 2) + Pause, lưu `docs/proof/phase-2/` | `P2-M4.3b`, `M1.3` (Huy) | `M6.5` | Chưa xong |
 | **P2 (Tùy chọn)** | **Mở rộng `burn`** | Cháy món (`burn_s: 20`, `ready_ticks > 1200` → `dish_burnt`) cùng M3 nếu xong lõi trước 1:35 | Lõi Phase 2 xanh | README + bằng chứng | Tùy chọn |
 
@@ -188,18 +188,20 @@ flowchart LR
   - [x] Mọi snapshot trong `day` có `day`, `day_plan`, `upgrades`, `active_upgrades`; mọi event có thêm `day`.
   - [x] Giữ `money`, `earned`, `reputation`, `upgrades` qua Ngày; hồi đầy oxy/Máu theo `active_upgrades`, làm mới giỏ, bỏ kho dư sau Shop; đóng Shop tăng `days_completed`, đủ `--days` kết thúc với `reason: "days_complete"`.
 
-#### Đợt 2 — `P2-M4.2`: Viết bộ test Phase 2 *(Ưu tiên P0 — chờ `M6.1`)*
-- [ ] Tạo `tests/test_day_shop_pause_m4.py`:
-  - [ ] Test Pause/Resume ở cả 3 mode (`gather`, `quan`, `day`), gồm cả Pause trong Shop (`time_left_ticks` đứng yên, bỏ qua `buy` khi pause, `resumed` chạy ngay bước đó).
-  - [ ] Test Shop: mua `oxygen` & `hp` cấp 1 → cấp 2, đủ đúng giá, thiếu tiền (`funds`), đã max (`max_level`), lệnh lạ (`unknown`), `buy` + `shop_done` cùng tick cuối, tự đóng sau 600 tick (`time`).
-  - [ ] Test `--mode day --days 1`: `day_start → day_plan → gather → quan → shop → end(days_complete, days_completed=1)` (cả trường hợp ngất vẫn mở quán với kho rỗng).
-  - [ ] Test `--mode day --days 2` (hoặc nhiều ngày): mua `oxygen`/`hp` ở Shop Ngày 1, kiểm tra Ngày 2 áp đúng `oxygen_max_ticks` / `hp_max` mới trong `active_upgrades` và bỏ kho dư.
+#### Đợt 2 — `P2-M4.2`: Viết bộ test Phase 2 *(Ưu tiên P0 — đã hoàn thành lõi unit test, giữ xanh Phase 1)*
+- [x] Tạo `tests/test_day_shop_pause_m4.py`:
+  - [x] Test Pause/Resume ở cả 3 mode (`gather`, `quan`, `day`), gồm cả Pause trong Shop (`time_left_ticks` đứng yên, bỏ qua `buy` khi pause, `resumed` chạy ngay bước đó).
+  - [x] Test Shop: mua `oxygen` & `hp` cấp 1 → cấp 2, đủ đúng giá, thiếu tiền (`funds`), đã max (`max_level`), lệnh lạ (`unknown`), `buy` + `shop_done` cùng tick cuối, tự đóng sau 600 tick (`time`).
+  - [x] Test `day` 1 ngày: `day_start → day_plan → gather → quan → shop → end(days_complete, days_completed=1)`.
+  - [x] Test `day` nhiều ngày: mua `oxygen`/`hp` ở Shop Ngày 1, kiểm tra Ngày 2 áp đúng `oxygen_max_ticks` (2700) / `hp_max` (4) mới trong `active_upgrades` và bỏ kho dư.
+- [ ] Bổ sung test hộp đen CLI `--mode day --days ...` ngay khi `M6.1` & `M6.2` xong.
 
-#### Đợt 3 — `P2-M4.3a` & `P2-M4.3b`: Cài đặt Pause, Shop & `--mode day` *(Ưu tiên P0 — chờ `M6.2` & `M3.3`)*
-- [ ] `P2-M4.3a`: Cài đặt Pause (`paused`/`resumed`, `state: "paused"`) trong `chonoi/runner.py` cho cả 3 mode.
-- [ ] `P2-M4.3a`: Cài đặt Shop (`chonoi/sim/shop.py` hoặc trong `chonoi/sim/day.py`) với `oxygen`/`hp`, `bought`/`buy_failed`/`shop_end`, giới hạn `shop.max_ticks` (600 tick).
-- [ ] `P2-M4.3b`: Cài đặt `DaySim` (`chonoi/sim/day.py`) nối `GatherSim` + `QuanSim` (với `day_plan` từ `M3.3`) + `Shop`, bàn giao kho trong bộ nhớ, sao `upgrades → active_upgrades` khi dựng Ngày mới, kiểm tính hợp lệ kho/khách lúc mở quán (mâu thuẫn → mã 2).
-- [ ] Đảm bảo hiệu năng 1 Ngày không pause (≤ 22.200 tick) chạy nhanh hơn 20 s và tất định byte-for-byte.
+#### Đợt 3 — `P2-M4.3a` & `P2-M4.3b`: Cài đặt Pause, Shop & `--mode day` *(Ưu tiên P0 — đã xong lõi tương thích ngược v1.0)*
+- [x] `P2-M4.3a`: Cài đặt Pause (`paused`/`resumed`, `state: "paused"`) trong `chonoi/runner.py` cho cả 3 mode (không ảnh hưởng v1.0).
+- [x] `P2-M4.3a`: Cài đặt Shop (`chonoi/sim/shop.py`) với `oxygen`/`hp`, `bought`/`buy_failed`/`shop_end`, giới hạn `shop.max_ticks` (600 tick).
+- [x] `P2-M4.3b`: Cài đặt `DaySim` (`chonoi/sim/day.py`) nối `GatherSim` + `QuanSim` (lọc thực đơn theo `day_plan`) + `ShopSim`, bàn giao kho trong bộ nhớ, sao `upgrades → active_upgrades` khi dựng Ngày mới.
+- [x] Đảm bảo hiệu năng 1 Ngày không pause (≤ 22.200 tick) chạy nhanh hơn 20 s và tất định byte-for-byte.
+- [ ] Nối `headless.py` + kiểm mâu thuẫn kho thực lúc mở quán sau khi `M6.2` & `M6.3` xong.
 
 #### Đợt 4 — `P2-M4.4` & Quy trình Phase 2 *(Ưu tiên P1)*
 - [ ] Chạy xanh toàn bộ `tests/test_day_shop_pause_m4.py` + regression Phase 1 + `tools/check_team.py`.
