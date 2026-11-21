@@ -16,3 +16,9 @@
 - Số liệu: số commit theo người, cách đọc code của nhau, token theo người:
 - Một lần AI sai và cách nhóm phát hiện:
 - Nếu làm lại, đổi gì:
+
+### Góp ý M1 (huyvu-03)
+
+- Hành động P2 đã áp dụng. Nhóm dùng `FRESH_SCALE = 240` và adapter song song khi đổi kho. Kiểm tra hai tiến trình trên v1.3 vẫn cho JSONL và file kho khớp từng byte.
+- AI ban đầu kiểm tra v1.2 với giỏ có đồ. Tôi bổ sung phép thử CLI với giỏ rỗng và phát hiện kho xuất dạng đếm. An sửa lỗi trước tag `phase-3`.
+- Lần sau, đưa case giỏ rỗng vào smoke ngay khi thiết kế schema, rồi chạy lại từ clone sạch trước khi đóng gói. [Bằng chứng Phase 3](proof/phase-3/m1.md) · [Kiểm clone Phase 4](proof/phase-4/m1.md)
