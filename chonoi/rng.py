@@ -17,3 +17,6 @@ class Streams:
             # seed ổn định theo (seed, name), không phụ thuộc thứ tự gọi
             self._streams[name] = random.Random(f"{self._seed}:{name}")
         return self._streams[name]
+
+    def stream(self, name: str) -> random.Random:
+        return self.get(name)

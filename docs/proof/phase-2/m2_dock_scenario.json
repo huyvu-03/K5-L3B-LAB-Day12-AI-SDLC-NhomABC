@@ -1,0 +1,16 @@
+{
+  "gather": {
+    "player": {
+      "pos": [2.0, 0.0]
+    },
+    "hold": [
+      "bong_sung",
+      "bong_dien_dien",
+      "keo_neo",
+      "ca_linh",
+      "ca_loc",
+      "ca_keo"
+    ],
+    "random_fish": false
+  }
+}
