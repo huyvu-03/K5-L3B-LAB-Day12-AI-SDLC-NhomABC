@@ -18,12 +18,15 @@
 - Số liệu: số commit (không tính merge, tại thời điểm chốt P4): `ththanh8888` (18), `NhMinh-2610` (16), `K0heii` (10), `thanhvu101` (10), `huyvu-03` (6), `QuangNEU` (5); review chéo theo cặp (M3↔M4, M1↔M2, M5↔M6); ước tính token ghi chi tiết theo từng phase tại `docs/ai-usage-log.md`.
 - Một lần AI sai và cách nhóm phát hiện: Khi ghép `FreshStockMixin` (M3) với `quan.py` (M4), AI viết test M4 kỳ vọng `fresh=100` ngay tick 1 nhưng quên Bước 1 đã trừ `-1/240` trước Bước 3 `interact`; nhóm phát hiện ngay khi chạy regression chéo M3+M4 và sửa test kiểm cả biên 100 lẫn chu kỳ hao 60 tick.
 - Nếu làm lại, đổi gì: Chốt interface mixin giữa các module dùng chung một file (`quan.py` ↔ `quan_fresh.py`) trước khi viết code song song để tránh trùng hàm tạm.
-- Số liệu: số commit theo người, cách đọc code của nhau, token theo người:
-- Một lần AI sai và cách nhóm phát hiện:
-- Nếu làm lại, đổi gì:
 
 ### Góp ý M1 (huyvu-03)
 
 - Hành động P2 đã áp dụng. Nhóm dùng `FRESH_SCALE = 240` và adapter song song khi đổi kho. Kiểm tra hai tiến trình trên v1.3 vẫn cho JSONL và file kho khớp từng byte.
 - AI ban đầu kiểm tra v1.2 với giỏ có đồ. Tôi bổ sung phép thử CLI với giỏ rỗng và phát hiện kho xuất dạng đếm. An sửa lỗi trước tag `phase-3`.
 - Lần sau, đưa case giỏ rỗng vào smoke ngay khi thiết kế schema, rồi chạy lại từ clone sạch trước khi đóng gói. [Bằng chứng Phase 3](proof/phase-3/m1.md) · [Kiểm clone Phase 4](proof/phase-4/m1.md)
+
+### Góp ý M3 (ththanh8888)
+
+- Hành động P2 đã áp dụng. `freshness.py` và adapter `v1.1`/`v1.2` giữ `main` xanh. Chạy lại trên `main` mới nhất: 234 test OK, 44 test bỏ qua gồm 42 test kho đếm cũ đã được thay bằng test v1.2. JSONL và kho khớp từng byte.
+- AI sai: test "D6–D10 lặp kế hoạch D1–D5" đỏ lần đầu vì AI quên `day_plan` Ngày 1 phát ở tick 0, không đi qua `Session.step`; thấy khi chạy test, sửa bằng `initial_event_rows()`. Cách xác minh: đọc nội dung `bench.json` và `soak.json` thay vì tin `OK`. Lúc kiểm, `bench.json` mới đo 3 s, `earned` luôn 0 và `soak.json` bị hỏng JSON sau merge.
+- Lần sau, thêm test kiểm schema file bằng chứng trước khi merge, và để bot soak hái và phục vụ thật để kiểm tiền, uy tín xuyên Ngày. [Bằng chứng Phase 4](proof/phase-4/m3.md)

@@ -10,3 +10,9 @@
 - **Tôi đã review:** `_cook_on_stove`, `day.py`, `shop.py` của Minh. Khớp Ticket03 ở việc tiêu đúng id, giá chốt bằng số nguyên, `items` sắp `(kind, id)`, bàn giao cùng tick và Shop không hao. Lỗi nhỏ: đơn `reserved: []` vẫn nấu được với giá đầy đủ (chưa sửa); nit: chú thích kiểu `inventory_items: dict` ở `_start_quan` sai vì hàm nhận cả list.
 - **AI sai ở đâu:** ghép M3 với M4 để lại hai bản kho chồng nhau nên 6 test đỏ; chạy toàn bộ test mới thấy.
 - **Điều tôi học được:** khi hai người cùng sửa một file, phải chạy cả bộ test sau khi ghép và gỡ bản tạm của người trước.
+
+## Phase 4 (bổ sung)
+- **Tôi đã làm:** M3 — QA hồi quy v1.3. Viết 26 test cho `bench_cmd` và `soak_cmd` (`tests/test_bench_m3.py`, `tests/test_soak_m3.py`) cùng `tools/m3_phase4_proof.py` chạy một lệnh gồm regression, tất định, bench 30 s, soak 10 Ngày, mỗi thứ hai lần ([2f898d5](https://github.com/huyvu-03/K5-L3B-LAB-Day12-AI-SDLC-NhomABC/commit/2f898d5)). Chạy lại trên `main` mới nhất: 234 test OK, log ở `docs/proof/phase-4/` ([8ac5f50](https://github.com/huyvu-03/K5-L3B-LAB-Day12-AI-SDLC-NhomABC/commit/8ac5f50)).
+- **Tôi đã review:** `bench.py` của Thanh và `soak.py` của Minh/Quang. Bench đủ 5 khóa nhưng `bench.json` đã commit mới đo 3 s. Soak đạt 10/10 Ngày nhưng bot cập bến ngay nên `earned` luôn 0, và `soak.json` sau merge bị hỏng JSON (hai dòng `duration_s`). Đã báo người phụ trách.
+- **AI sai ở đâu:** test "D6–D10 lặp kế hoạch D1–D5" đỏ lần đầu vì AI quên `day_plan` Ngày 1 phát ở tick 0, không đi qua `Session.step`; chạy test mới thấy, sửa bằng `initial_event_rows()`.
+- **Điều tôi học được:** `crashes: 0` chưa chứng minh trạng thái xuyên Ngày; phải đọc nội dung `soak.json` và kiểm cả file bằng chứng.
