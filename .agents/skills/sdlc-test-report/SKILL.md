@@ -27,7 +27,30 @@ bảo đảm hệ thống không bị lỗi hồi quy (regression) và điền c
 
 ---
 
-## 2. Cách chạy kiểm thử cho Phase bất kỳ
+## 2. Ranh Giới An Toàn & Danh Sách Đen (CẤM ĐỤNG VÀO)
+
+Khi chạy kiểm thử, sinh bằng chứng và lập báo cáo:
+
+### ❌ Những Điều TUYỆT ĐỐI CẤM (Blacklist)
+1. **CẤM SỬA TEST CONTRACT CỦA GIẢNG VIÊN / M6 ĐỂ LÀM XANH BÀI:**
+   - ❌ Tuyệt đối không sửa `tests/test_smoke_*.py`, `tests/test_scenario.py`, `tests/test_contract.py`, `tests/test_inventory.py`, `tests/test_freshness_*.py`.
+   - Nếu test fail $\rightarrow$ lỗi nằm ở code sim hoặc kịch bản input của module mình. Phải sửa code sim trong phạm vi được phân công, không sửa test mẫu.
+2. **CẤM SỬA FRAMEWORK ĐỂ "HỖ TRỢ" TEST:**
+   - ❌ Không sửa `chonoi/headless.py`, `chonoi/runner.py`, `chonoi/contract.py`, `chonoi/inputs.py`, `chonoi/jsonl.py`, `chonoi/ids.py`, `chonoi/scenario.py`, `chonoi/inventory.py`.
+   - Mọi mock contract cho test suite riêng phải được định nghĩa cục bộ bên trong file test của module đó (ví dụ: dùng `unittest.mock.patch` trong `tests/test_gather_m2_p3.py`).
+3. **CẤM GHI ĐÈ FILE BẰNG CHỨNG & PROFILE CỦA THÀNH VIÊN KHÁC:**
+   - ❌ Không ghi đè hoặc sửa file trong `docs/proof/` của module khác.
+   - ❌ Không sửa hồ sơ phản tư cá nhân `docs/members/<handle_khác>.md`.
+
+### ✅ File ĐƯỢC PHÉP TẠO / CẬP NHẬT (Whitelist)
+- **Test suite module mình:** `tests/test_<module>_p<N>.py` (ví dụ `tests/test_gather_m2_p3.py`).
+- **File bằng chứng module mình:** `docs/proof/phase-<N>/m<X>*.json*`, `docs/proof/phase-<N>/m<X>.md`.
+- **Ma trận nghiệm thu chung:** Cập nhật các dòng thuộc module mình trong `docs/verification/phase-<N>.md`.
+- **Nhật ký:** `docs/ai-usage-log.md` (append dòng mới), `docs/standup.md`.
+
+---
+
+## 3. Cách chạy kiểm thử cho Phase bất kỳ
 
 ### Cách 1: Script tự động trọn gói (Khuyên dùng ⭐)
 Script tự động nhận diện phase qua cờ `--phase <N>`:

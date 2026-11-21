@@ -25,7 +25,31 @@ từ bảng phân công của nhóm ở **Phase hiện tại (1, 2, 3 hoặc 4)*
 
 ---
 
-## 2. Quy trình thực hiện (5 bước bắt buộc)
+## 2. Ranh Giới Tác Vụ & Danh Sách Đen (CẤM ĐỤNG VÀO)
+
+Khi phân tích yêu cầu và sinh tài liệu đặc tả (Spec), AI phải tuân thủ tuyệt đối ranh giới kiến trúc:
+
+### ❌ File CẤM ĐỤNG VÀO (Blacklist)
+1. **Khung lõi chấm điểm của Giảng viên:**
+   - ❌ `chonoi/headless.py`, `chonoi/runner.py`, `chonoi/contract.py`, `chonoi/inputs.py`, `chonoi/jsonl.py`, `chonoi/ids.py`, `tools/check_team.py`.
+2. **Hợp đồng & Schema hệ thống (Độc quyền M6 — PO/Integrator Duy An):**
+   - ❌ `game.contract.json`, `docs/contracts/**`, `chonoi/scenario.py`, `chonoi/inventory.py`.
+   - ❌ Toàn bộ test suite mẫu/hợp đồng của M6: `tests/test_smoke_*.py`, `tests/test_scenario.py`, `tests/test_contract.py`, `tests/test_inventory.py`, `tests/test_freshness_*.py`.
+3. **Module và hồ sơ của thành viên khác:**
+   - ❌ `chonoi/sim/quan.py`, `chonoi/sim/quan_customers.py`, `chonoi/sim/day.py`, `chonoi/sim/shop.py` (M3, M4).
+   - ❌ `chonoi/web/**`, `chonoi/live.py` (M5).
+   - ❌ `docs/specs/phase-*-m{khác}.md`, `docs/proof/phase-*/m{khác}*`.
+   - ❌ `docs/members/<handle_khác>.md`.
+4. **Không đề xuất kiến trúc vi phạm ranh giới:**
+   - Spec **KHÔNG ĐƯỢC PHÉP** đề xuất sửa đổi các file ngoài module mình (ví dụ không đề xuất sửa `headless.py`, không thêm cờ vào `scenario.py`). Mọi adapter tương thích phiên bản phải được thiết kế gói gọn trong module của mình (`gather.py` hoặc `quan.py`).
+
+### ✅ File ĐƯỢC PHÉP TẠO / SỬA (Whitelist)
+- **Tài liệu đặc tả:** `docs/specs/phase-<N>-<module>.md` (ví dụ `docs/specs/phase-3-m2.md`).
+- **Nhật ký AI:** Append dòng mới vào `docs/ai-usage-log.md`.
+
+---
+
+## 3. Quy trình thực hiện (5 bước bắt buộc)
 
 ### Bước 1: Nhận diện Phase & Nắm rõ phạm vi công việc
 1. **Xác định Phase $N$:** Lấy từ yêu cầu của người dùng (1, 2, 3 hoặc 4). Nếu không nêu rõ, tự động tìm file task mới nhất trong workspace (`phase-4-task.md` $\rightarrow$ `phase-3-task.md` $\rightarrow$ `phase-2-task.md` $\rightarrow$ `phase-1-task.md` hoặc `docs/plan/phase-N.md`).
