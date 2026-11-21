@@ -59,9 +59,45 @@ from ..ids import sort_by_id
 for node in sort_by_id(self.nodes):
 ```
 
-### ❌ QT-4: KHÔNG SỬA FRAMEWORK LÕI
-Chỉ chỉnh sửa trong: `chonoi/sim/gather.py`, `chonoi/sim/quan.py` (và helpers trong `chonoi/sim/`).
-Không tự ý sửa: `chonoi/headless.py`, `chonoi/runner.py`, `chonoi/contract.py`, `game.contract.json` (trừ khi có chỉ đạo từ PO/M6).
+### ❌ QT-4: KHÔNG SỬA FRAMEWORK LÕI & FILE NGOÀI PHẠM VI (CẤM ĐỤNG VÀO)
+AI phải tuyệt đối tuân thủ danh sách đen (Blacklist) dưới đây; vi phạm sửa các file này sẽ bị trừ điểm hoặc làm gãy pipeline CI/CD:
+
+1. **Khung lõi chấm điểm của Giảng viên (CẤM SỬA TUYỆT ĐỐI):**
+   - ❌ `chonoi/headless.py` (Điểm vào CLI chạy mô phỏng)
+   - ❌ `chonoi/runner.py` (Vòng lặp điều phối tick)
+   - ❌ `chonoi/contract.py` (Bộ nạp và kiểm tra contract)
+   - ❌ `chonoi/inputs.py` (Parser nạp khung phím bấm)
+   - ❌ `chonoi/jsonl.py` (Bộ ghi log JSONL đồng bộ)
+   - ❌ `chonoi/ids.py` (Khung cấp ID `IdAllocator`)
+   - ❌ `tools/check_team.py` (Script kiểm tra tính toàn vẹn nhóm)
+
+2. **File Hợp đồng & Schema toàn dự án (ĐỘC QUYỀN M6 — PO/Integrator Duy An):**
+   - ❌ `game.contract.json` (Khóa hợp đồng tuning, tick_hz, schema)
+   - ❌ `docs/contracts/**` (Thư mục tài liệu đặc tả contract)
+   - ❌ `chonoi/scenario.py` (Bộ validate kịch bản đầu vào)
+   - ❌ `chonoi/inventory.py` (Adapter đọc/ghi kho)
+   - ❌ `tests/test_smoke_*.py`, `tests/test_scenario.py`, `tests/test_contract.py`, `tests/test_inventory.py`, `tests/test_freshness_*.py` (Test hợp đồng do M6 quản lý; TUYỆT ĐỐI KHÔNG sửa test contract để ép test xanh)
+
+3. **File thuộc phân công Module của thành viên khác (TRÁNH XUNG ĐỘT GIT):**
+   - ❌ `chonoi/sim/quan.py`, `chonoi/sim/quan_customers.py` (Thuộc M3 — Cao & M4 — Minh)
+   - ❌ `chonoi/sim/day.py`, `chonoi/sim/shop.py` (Thuộc M4 — Minh)
+   - ❌ `chonoi/web/**`, `chonoi/live.py` (Thuộc M5 — Thanh)
+   - ❌ `tests/test_quan*.py`, `tests/test_live.py` (Test của module khác)
+   - ❌ `docs/specs/phase-*-m{1,3,4,5,6}.md` (Spec của module khác)
+   - ❌ `docs/proof/phase-*/m{1,3,4,5,6}*` (Bằng chứng của module khác)
+   - ❌ `docs/members/<handle_khác>.md` (Hồ sơ phản tư của bạn khác)
+
+4. **PHẠM VI ĐƯỢC PHÉP SỬA THEO MODULE (WHITELIST):**
+   - **Khi làm M1 (Huy):**
+     - Code: `chonoi/sim/gather.py` (logic sinh tồn, lặn, ngạt, máu).
+     - Test: `tests/test_gather_m1*.py`.
+   - **Khi làm M2 (Quang):**
+     - Code: **CHỈ DUY NHẤT** `chonoi/sim/gather.py` (logic giỏ LIFO, thu hoạch, bắt cá, cập bến, xuất kho). Mọi adapter tương thích phiên bản (như `_is_v12`) phải gói gọn bên trong `GatherSim.__init__`, tuyệt đối không chèn cờ vào `headless.py` hay `scenario.py`.
+     - Test: `tests/test_gather_m2*.py`.
+   - **Tài liệu & Bằng chứng của M1/M2:**
+     - `docs/specs/phase-*-m1.md` / `m2.md`, `docs/proof/phase-*/m1*` / `m2*`.
+     - Cập nhật ma trận `docs/verification/phase-*.md`.
+     - Thêm dòng vào `docs/ai-usage-log.md`, `docs/standup.md`, và phản tư cá nhân `docs/members/<handle>.md`.
 
 ### ❌ QT-5: TÍNH NĂNG SÁNG TẠO TẮT Ở HEADLESS
 UI, âm thanh, spritesheet chỉ được kích hoạt ở `chonoi/web/` hoặc `chonoi/live.py`.
