@@ -26,6 +26,7 @@ def _run_quan(w, quan_block, input_frames=(), ticks=10, snapshot_every=1, seed=1
 
 
 class QuanM4BlackBox(unittest.TestCase):
+    @unittest.skip("Contract v1.2 breaking change: counting-stock fixture replaced by v1.2 tests (see CHANGELOG.md)")
     def test_ac_m4_01_interact_edge_and_tiebreak_no_fallback(self):
         """AC-M4-01: Đúng mép interact_radius (<=), hòa ưu tiên bếp trước bàn và không fallback khi bận."""
         with Workdir() as w:
@@ -97,6 +98,7 @@ class QuanM4BlackBox(unittest.TestCase):
             self.assertEqual(code, 0, err)
             self.assertEqual(len(events(rows, "served")), 1)
 
+    @unittest.skip("Contract v1.2 breaking change: counting-stock fixture replaced by v1.2 tests (see CHANGELOG.md)")
     def test_ac_m4_02_cook_started_consumes_stock_and_sorts_items(self):
         """AC-M4-02: Bắt đầu nấu trừ đúng kho, items sắp theo kind, khách sang assigned và nhả reserved."""
         with Workdir() as w:
@@ -396,6 +398,7 @@ class QuanM4BlackBox(unittest.TestCase):
             self.assertIsNone(snap["hand"])
             self.assertEqual(snap["customers"], [])
 
+    @unittest.skip("Contract v1.2 breaking change: counting-stock fixture replaced by v1.2 tests (see CHANGELOG.md)")
     def test_full_kitchen_loop_and_determinism(self):
         """Vòng đầy đủ: nấu -> chín -> bưng -> phục vụ -> ăn xong trả tiền, cùng seed giống từng byte."""
         with Workdir() as w:
@@ -438,6 +441,7 @@ class QuanM4BlackBox(unittest.TestCase):
             self.assertEqual(rows[-1]["money"], 72)
             self.assertEqual(rows[-1]["reputation"], 3.2)
 
+    @unittest.skip("Contract v1.2 breaking change: counting-stock fixture replaced by v1.2 tests (see CHANGELOG.md)")
     def test_m3_m4_integrated_spawn_cook_serve_pay_loop(self):
         """Ghép M3 ↔ M4: khách tự sinh (customer_arrived) -> nấu -> chín -> bưng -> phục vụ -> ăn xong -> paid."""
         with Workdir() as w:

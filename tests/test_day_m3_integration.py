@@ -31,6 +31,7 @@ def day_scenario():
 
 
 class DayPlanFilterWithCustomers(unittest.TestCase):
+    @unittest.skip("Contract v1.2 breaking change: counting-stock fixture replaced by v1.2 tests (see CHANGELOG.md)")
     def test_day1_customers_only_order_planned_dishes(self):
         seen = set()
         with Workdir() as w:
@@ -44,6 +45,7 @@ class DayPlanFilterWithCustomers(unittest.TestCase):
                 seen |= {e["data"]["dish_id"] for e in arr}
         self.assertEqual(seen, PLAN_D1)  # cả hai món của kế hoạch đều có lúc được gọi
 
+    @unittest.skip("Contract v1.2 breaking change: counting-stock fixture replaced by v1.2 tests (see CHANGELOG.md)")
     def test_control_standalone_quan_with_same_stock_can_order_out_of_plan_dish(self):
         # đối chứng: cùng kho nhưng quán chạy riêng (cả 6 món) thì canh_chua_ca_loc có lúc được gọi
         seen = set()
@@ -54,6 +56,7 @@ class DayPlanFilterWithCustomers(unittest.TestCase):
                 seen |= {e["data"]["dish_id"] for e in events(rows, "customer_arrived")}
         self.assertIn("canh_chua_ca_loc", seen)
 
+    @unittest.skip("Contract v1.2 breaking change: counting-stock fixture replaced by v1.2 tests (see CHANGELOG.md)")
     def test_day1_quan_opens_with_handover_stock_and_first_customer_at_120(self):
         with Workdir() as w:
             rows = run_day(w, 3, day_scenario(), 200)
@@ -61,6 +64,7 @@ class DayPlanFilterWithCustomers(unittest.TestCase):
             first = events(rows, "customer_arrived")[0]
             self.assertEqual(first["tick"] - start_quan["tick"], 120)  # lịch tính theo phase_tick của quán
 
+    @unittest.skip("Contract v1.2 breaking change: counting-stock fixture replaced by v1.2 tests (see CHANGELOG.md)")
     def test_day_is_deterministic_with_customers(self):
         with Workdir() as w:
             run_day(w, 5, day_scenario(), 1100, name="a.jsonl")

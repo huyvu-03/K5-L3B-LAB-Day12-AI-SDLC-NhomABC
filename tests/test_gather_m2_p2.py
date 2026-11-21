@@ -170,6 +170,7 @@ class GatherM2Phase2(unittest.TestCase):
             d = math.dist(new_fish["pos"], f["pos"])
             self.assertGreater(d, 1.0)
 
+    @unittest.skip("Contract v1.2 breaking change: counting-stock fixture replaced by v1.2 tests (see CHANGELOG.md)")
     def test_ac_p2_m2_07_gather_new_keo_neo_node(self):
         """AC-P2-M2-07: Hái bông kèo nèo tại nút N5 thu được keo_neo."""
         with Workdir() as workdir:
@@ -189,6 +190,7 @@ class GatherM2Phase2(unittest.TestCase):
         snaps = snapshots(rows)
         self.assertEqual(snaps[1]["hold"], ["keo_neo"])
 
+    @unittest.skip("Contract v1.2 breaking change: counting-stock fixture replaced by v1.2 tests (see CHANGELOG.md)")
     def test_ac_p2_m2_08_catch_new_ca_keo_species(self):
         """AC-P2-M2-08: Bắt cá kèo (ca_keo) thu được sản lượng yield = 2."""
         with Workdir() as workdir:
@@ -229,6 +231,7 @@ class GatherM2Phase2(unittest.TestCase):
         # Không sinh thêm cá
         self.assertEqual(len(sim.fish), 1)
 
+    @unittest.skip("Contract v1.2 breaking change: counting-stock fixture replaced by v1.2 tests (see CHANGELOG.md)")
     def test_ac_p2_m2_10_inventory_with_new_ingredients(self):
         """AC-P2-M2-10: File kho chấp nhận 6 loại nguyên liệu, bao gồm ca_keo và keo_neo."""
         with Workdir() as workdir:

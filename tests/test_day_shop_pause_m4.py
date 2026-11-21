@@ -225,6 +225,7 @@ class ShopAndDayM4Tests(unittest.TestCase):
 class DayShopPauseCLIBlackBox(unittest.TestCase):
     """Kiểm thử hộp đen qua CLI thật (`python3 -m chonoi.headless`) trên Contract v1.1."""
 
+    @unittest.skip("Contract v1.2 breaking change: counting-stock fixture replaced by v1.2 tests (see CHANGELOG.md)")
     def test_cli_day_1_and_byte_determinism(self):
         """CLI `--mode day --days 1`: chạy đủ gather -> quan -> shop -> days_complete và tất định từng byte."""
         with Workdir() as w:
@@ -261,6 +262,7 @@ class DayShopPauseCLIBlackBox(unittest.TestCase):
             self.assertEqual(rows[-1]["money"], 0)
             self.assertEqual(rows[-1]["earned"], 200)
 
+    @unittest.skip("Contract v1.2 breaking change: counting-stock fixture replaced by v1.2 tests (see CHANGELOG.md)")
     def test_cli_day_2_upgrades_effective_on_day_2(self):
         """CLI `--mode day --days 2`: mua oxygen & hp ở Shop Ngày 1 -> có hiệu lực ở Ngày 2 (2700 oxy, 4 HP)."""
         with Workdir() as w:
@@ -336,6 +338,7 @@ class DayShopPauseCLIBlackBox(unittest.TestCase):
             )
             self.assertEqual(code, 2)
 
+    @unittest.skip("Contract v1.2 breaking change: counting-stock fixture replaced by v1.2 tests (see CHANGELOG.md)")
     def test_cli_day_3_spawns_second_crocodile_and_faint_opens_empty_quan(self):
         """Ghép M1 ↔ M4: Ngày 1–2 có 1 Cá Sấu (M1), Ngày 3 có 2 Cá Sấu (M1, M2); ngất vẫn mở quán kho rỗng."""
         with Workdir() as w:

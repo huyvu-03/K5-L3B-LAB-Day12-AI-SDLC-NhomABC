@@ -24,6 +24,7 @@ def load_contract(path=DEFAULT_PATH) -> dict:
     except (OSError, ValueError) as e:
         raise BadInput(f"không đọc được {path}: {e}")
     validate_tuning(c.get("tuning"))
+    c["tuning"]["contract_version"] = c.get("contract_version", "1.1")
     return c
 
 

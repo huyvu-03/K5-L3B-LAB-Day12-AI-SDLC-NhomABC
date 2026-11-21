@@ -168,7 +168,7 @@ class QuanSim(CustomerMixin, FreshStockMixin):
         dish_id = cust["dish_id"]
         spec = self.menu[dish_id]
         if self.item_mode:
-            # v1.2: tiêu đúng các id cá thể đang giữ qua FreshStockMixin, chốt giá theo avg_fresh (scale 240)
+            # v1.2: tiêu đúng các id cá thể đang giữ (M3 `_consume_reserved`), chốt giá theo avg_fresh nguyên (scale 240)
             taken = self._consume_reserved(cust)
             base_price = calc_fresh_base_price(spec["price"], [it["units"] for it in taken])
             items = [{"id": it["id"], "kind": it["kind"], "fresh": it["fresh"]} for it in taken]

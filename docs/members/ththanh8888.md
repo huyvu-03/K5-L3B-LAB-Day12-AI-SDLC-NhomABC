@@ -4,3 +4,9 @@
 - **Tôi đã review:** `quan.py` của Minh ([b42538f](https://github.com/huyvu-03/K5-L3B-LAB-Day12-AI-SDLC-NhomABC/commit/b42538f)): `_clamp_rep` định nghĩa hai nơi. Phase 2: `day.py`, `shop.py`, pause trong `runner.py` ([12c98f5](https://github.com/huyvu-03/K5-L3B-LAB-Day12-AI-SDLC-NhomABC/commit/12c98f5)) đối chiếu Ticket02 và chạy thật `--days 2`: khớp thứ tự pause, buy trước `shop_done`, `phase_start` cùng tick, cấp áp từ Ngày sau. Câu hỏi: id khách nối tiếp sang Ngày 2 (K13); nit: `ShopSim` đặt sẵn uy tín 3.0.
 - **AI sai ở đâu:** Phase 1 viết hai test sai (bàn bị chiếm, thiếu kho). Phase 2 AI quên 4 bàn khiến 4 test cũ vỡ; chạy toàn bộ test mới thấy.
 - **Điều tôi học được:** chạy cả bộ test trước khi đẩy và ghi lý do khi đổi test.
+
+## Phase 3 (bổ sung)
+- **Tôi đã làm:** M3 — Quán v1.2 (kho cá thể). Spec AC-P3-C1…C9 ([f78bba8](https://github.com/huyvu-03/K5-L3B-LAB-Day12-AI-SDLC-NhomABC/commit/f78bba8)), 34 test ([a4a4677](https://github.com/huyvu-03/K5-L3B-LAB-Day12-AI-SDLC-NhomABC/commit/a4a4677)), `quan_fresh.py` ([ab6dd35](https://github.com/huyvu-03/K5-L3B-LAB-Day12-AI-SDLC-NhomABC/commit/ab6dd35)), dọn kho trùng giữa `quan.py` và `quan_fresh.py` ([590bfab](https://github.com/huyvu-03/K5-L3B-LAB-Day12-AI-SDLC-NhomABC/commit/590bfab), PR #20).
+- **Tôi đã review:** `_cook_on_stove`, `day.py`, `shop.py` của Minh. Khớp Ticket03 ở việc tiêu đúng id, giá chốt bằng số nguyên, `items` sắp `(kind, id)`, bàn giao cùng tick và Shop không hao. Lỗi nhỏ: đơn `reserved: []` vẫn nấu được với giá đầy đủ (chưa sửa); nit: chú thích kiểu `inventory_items: dict` ở `_start_quan` sai vì hàm nhận cả list.
+- **AI sai ở đâu:** ghép M3 với M4 để lại hai bản kho chồng nhau nên 6 test đỏ; chạy toàn bộ test mới thấy.
+- **Điều tôi học được:** khi hai người cùng sửa một file, phải chạy cả bộ test sau khi ghép và gỡ bản tạm của người trước.

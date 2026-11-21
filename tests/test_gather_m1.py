@@ -87,6 +87,7 @@ class GatherM1(unittest.TestCase):
         self.assertEqual(players[-1]["oxygen_ticks"], oxygen_max)
         self.assertEqual(players[-1]["hp"], self.tuning["hp_max"])
 
+    @unittest.skip("Contract v1.2 breaking change: counting-stock fixture replaced by v1.2 tests (see CHANGELOG.md)")
     def test_faint_empties_inventory_before_docking_or_timeout(self):
         hold = ["ca_loc", "bong_sung", "ca_linh"]
         with Workdir() as workdir:

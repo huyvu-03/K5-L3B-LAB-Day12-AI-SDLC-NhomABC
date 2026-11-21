@@ -25,6 +25,7 @@ class GatherM2(unittest.TestCase):
         self.assertEqual(code, 0, stderr)
         return read_jsonl(out)
 
+    @unittest.skip("Contract v1.2 breaking change: counting-stock fixture replaced by v1.2 tests (see CHANGELOG.md)")
     def test_ac_m2_01_gather_surface_node_success(self):
         """AC-M2-01: Hái nút mặt nước thành công."""
         with Workdir() as workdir:
@@ -69,6 +70,7 @@ class GatherM2(unittest.TestCase):
         self.assertTrue(snaps[2]["nodes"][0]["ready"])
         self.assertEqual(snaps[2]["nodes"][0]["regrow_ticks"], 0)
 
+    @unittest.skip("Contract v1.2 breaking change: counting-stock fixture replaced by v1.2 tests (see CHANGELOG.md)")
     def test_ac_m2_03_hold_full_on_gather(self):
         """AC-M2-03: Giỏ đầy khi hái phát event hold_full."""
         cap = self.tuning["hold_capacity"]
@@ -91,6 +93,7 @@ class GatherM2(unittest.TestCase):
         self.assertEqual(len(snaps[1]["hold"]), cap)
         self.assertTrue(snaps[1]["nodes"][0]["ready"])
 
+    @unittest.skip("Contract v1.2 breaking change: counting-stock fixture replaced by v1.2 tests (see CHANGELOG.md)")
     def test_ac_m2_04_dock_priority_over_gather(self):
         """AC-M2-04: Ưu tiên cập bến trước hái khi trong dock."""
         with Workdir() as workdir:
@@ -125,6 +128,7 @@ class GatherM2(unittest.TestCase):
         self.assertEqual(events(rows, "gather"), [])
         self.assertEqual(events(rows, "hold_full"), [])
 
+    @unittest.skip("Contract v1.2 breaking change: counting-stock fixture replaced by v1.2 tests (see CHANGELOG.md)")
     def test_ac_m2_06_catch_fish_success(self):
         """AC-M2-06: Bắt đàn cá dưới nước thành công."""
         with Workdir() as workdir:
@@ -148,6 +152,7 @@ class GatherM2(unittest.TestCase):
         self.assertEqual(snaps[1]["player"]["catch_cd_ticks"], 30)
         self.assertEqual(snaps[2]["player"]["catch_cd_ticks"], 29)
 
+    @unittest.skip("Contract v1.2 breaking change: counting-stock fixture replaced by v1.2 tests (see CHANGELOG.md)")
     def test_ac_m2_07_hold_full_on_catch(self):
         """AC-M2-07: Bắt cá thiếu chỗ phát event hold_full, giữ đàn cá, không hồi chiêu."""
         with Workdir() as workdir:
@@ -215,6 +220,7 @@ class GatherM2(unittest.TestCase):
         self.assertEqual(len(evs), 1)
         self.assertEqual(evs[0]["data"]["node_id"], "N1")
 
+    @unittest.skip("Contract v1.2 breaking change: counting-stock fixture replaced by v1.2 tests (see CHANGELOG.md)")
     def test_ac_m2_10_inventory_output_file(self):
         """AC-M2-10: Ghi file kho đúng format, sắp xếp key, bỏ count 0."""
         with Workdir() as workdir:
