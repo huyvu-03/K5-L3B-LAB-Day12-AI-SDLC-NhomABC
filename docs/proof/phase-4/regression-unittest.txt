@@ -1,6 +1,6 @@
-{"avg_fps": 9672.05, "p1_low_fps": 4993.13, "frames": 1935, "measured_s": 0.2, "load_ms": 0.71}
-{"avg_fps": 9199.73, "p1_low_fps": 7017.54, "frames": 9200, "measured_s": 1.0, "load_ms": 0.56}
-{"avg_fps": 9377.5, "p1_low_fps": 5718.59, "frames": 1876, "measured_s": 0.2, "load_ms": 0.59}
+{"avg_fps": 5998.36, "p1_low_fps": 2809.58, "frames": 1200, "measured_s": 0.2, "load_ms": 1.01}
+{"avg_fps": 5130.04, "p1_low_fps": 3954.1, "frames": 5131, "measured_s": 1.0, "load_ms": 0.6}
+{"avg_fps": 5661.3, "p1_low_fps": 3058.96, "frames": 1133, "measured_s": 0.2, "load_ms": 1.04}
 test_bench_cmd_declared_in_contract (test_bench_m3.BenchContract.test_bench_cmd_declared_in_contract) ... ok
 test_bench_cmd_full_30s (test_bench_m3.BenchContract.test_bench_cmd_full_30s) ... skipped 'đặt P4_FULL=1 để chạy bench chuẩn 30 s'
 test_proof_file_measured_30s (test_bench_m3.BenchProof.test_proof_file_measured_30s) ... skipped 'đặt P4_STRICT_PROOF=1 để bắt buộc bằng chứng đo ≈ 30 s'
@@ -253,7 +253,7 @@ test_day_scenario_valid_and_conflicts_exit_2 (test_scenario_v11_m6.ContractV11An
 test_inputs_v11_pause_shop_done_buy (test_scenario_v11_m6.ContractV11AndScenarioM6.test_inputs_v11_pause_shop_done_buy) ... ok
 test_con_01_ticks_zero_and_end_line (test_smoke_p1.Contract.test_con_01_ticks_zero_and_end_line) ... ok
 test_con_02_deterministic_bytes (test_smoke_p1.Contract.test_con_02_deterministic_bytes) ... ok
-test_con_03_bad_input_exit_2 (test_smoke_p1.Contract.test_con_03_bad_input_exit_2) ... Exception in thread Thread-214 (_readerthread):
+test_con_03_bad_input_exit_2 (test_smoke_p1.Contract.test_con_03_bad_input_exit_2) ... Exception in thread Thread-213 (_readerthread):
 Traceback (most recent call last):
   File "C:\Users\ADMIN\AppData\Local\Programs\Python\Python313\Lib\threading.py", line 1044, in _bootstrap_inner
     self.run()
@@ -268,7 +268,7 @@ Traceback (most recent call last):
     return codecs.charmap_decode(input,self.errors,decoding_table)[0]
            ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 UnicodeDecodeError: 'charmap' codec can't decode byte 0x9d in position 35: character maps to <undefined>
-Exception in thread Thread-216 (_readerthread):
+Exception in thread Thread-215 (_readerthread):
 Traceback (most recent call last):
   File "C:\Users\ADMIN\AppData\Local\Programs\Python\Python313\Lib\threading.py", line 1044, in _bootstrap_inner
     self.run()
@@ -286,7 +286,7 @@ UnicodeDecodeError: 'charmap' codec can't decode byte 0x9d in position 35: chara
 ok
 test_con_03_old_and_future_modes_rejected (test_smoke_p1.Contract.test_con_03_old_and_future_modes_rejected) ... ok
 test_gather_snapshot_has_gather_fields (test_smoke_p1.Contract.test_gather_snapshot_has_gather_fields) ... ok
-test_scenario_out_of_domain_exit_2 (test_smoke_p1.Contract.test_scenario_out_of_domain_exit_2) ... Exception in thread Thread-234 (_readerthread):
+test_scenario_out_of_domain_exit_2 (test_smoke_p1.Contract.test_scenario_out_of_domain_exit_2) ... Exception in thread Thread-233 (_readerthread):
 Traceback (most recent call last):
   File "C:\Users\ADMIN\AppData\Local\Programs\Python\Python313\Lib\threading.py", line 1044, in _bootstrap_inner
     self.run()
@@ -320,6 +320,20 @@ test_time_ends_gather_and_keeps_hold (test_smoke_p1.Movement.test_time_ends_gath
 test_khoi_sai_mode_exit_2 (test_smoke_p1.ScenarioModes.test_khoi_sai_mode_exit_2) ... ok
 test_quan_fixture_khong_hop_le_exit_2 (test_smoke_p1.ScenarioModes.test_quan_fixture_khong_hop_le_exit_2) ... ok
 test_quan_player_vel_hop_le (test_smoke_p1.ScenarioModes.test_quan_player_vel_hop_le) ... ok
+test_ac_p4_m2_01_invalid_days_argument (test_soak_m2_p4.TestSoakM2Phase4.test_ac_p4_m2_01_invalid_days_argument)
+AC-P4-M2-01: Chặn tham số không hợp lệ (--days < 1) và trả về mã lỗi 2. ... lỗi: --days phải >= 1
+lỗi: --days phải >= 1
+ok
+test_ac_p4_m2_02_and_03_soak_10_days_zero_crashes_and_5_keys (test_soak_m2_p4.TestSoakM2Phase4.test_ac_p4_m2_02_and_03_soak_10_days_zero_crashes_and_5_keys)
+AC-P4-M2-02 & AC-P4-M2-03: Chạy 10 Ngày liên tục không crash, xuất đủ 5 trường schema. ... ok
+test_ac_p4_m2_04_results_array_structure (test_soak_m2_p4.TestSoakM2Phase4.test_ac_p4_m2_04_results_array_structure)
+AC-P4-M2-04: Mảng results chứa đủ 10 phần tử (Day 1..10) với các trường earned, reputation, score. ... ok
+test_ac_p4_m2_05_day_plan_rollover_d5_to_d6 (test_soak_m2_p4.TestSoakM2Phase4.test_ac_p4_m2_05_day_plan_rollover_d5_to_d6)
+AC-P4-M2-05: Chuyển tiếp chu kỳ kế hoạch ngày: D6 lặp lại D1, D7 lặp lại D2 không lỗi. ... ok
+test_ac_p4_m2_06_determinism_across_runs (test_soak_m2_p4.TestSoakM2Phase4.test_ac_p4_m2_06_determinism_across_runs)
+AC-P4-M2-06: Hai lần chạy độc lập cùng seed 7 cho mảng results giống hệt nhau từng giá trị. ... ok
+test_ac_p4_m2_07_id_continuity_and_no_id_reset (test_soak_m2_p4.TestSoakM2Phase4.test_ac_p4_m2_07_id_continuity_and_no_id_reset)
+AC-P4-M2-07: Bộ cấp phát ID cá thể (IdAllocator) duy trì liên tục xuyên ngày, không bị reset. ... ok
 test_soak_cmd_declared (test_soak_m3.SoakContract.test_soak_cmd_declared) ... ok
 test_soak_cmd_via_subprocess (test_soak_m3.SoakContract.test_soak_cmd_via_subprocess) ... ok
 test_day5_to_day6_no_reset (test_soak_m3.SoakCrossDayState.test_day5_to_day6_no_reset) ... ok
@@ -331,7 +345,7 @@ Bộ cấp id không lùi về 1 sau D5→D6 (id cá thể xuyên suốt, không
 test_initial_state_carried_into_day1 (test_soak_m3.SoakCrossDayState.test_initial_state_carried_into_day1) ... ok
 test_money_never_negative (test_soak_m3.SoakCrossDayState.test_money_never_negative) ... ok
 test_ran_all_10_days (test_soak_m3.SoakCrossDayState.test_ran_all_10_days) ... ok
-test_proof_file (test_soak_m3.SoakProof.test_proof_file) ... skipped 'chưa có docs/proof/phase-4/soak.json'
+test_proof_file (test_soak_m3.SoakProof.test_proof_file) ... ok
 test_10_days_schema_and_counts (test_soak_m3.SoakSchema.test_10_days_schema_and_counts) ... ok
 test_bad_days_exit_2 (test_soak_m3.SoakSchema.test_bad_days_exit_2) ... lỗi: --days phải >= 1
 ok
@@ -344,6 +358,6 @@ test_too_few_members (test_team_check.TeamCheck.test_too_few_members) ... ok
 test_wrong_size_duplicate_and_outsider (test_team_check.TeamCheck.test_wrong_size_duplicate_and_outsider) ... ok
 
 ----------------------------------------------------------------------
-Ran 228 tests in 19.805s
+Ran 234 tests in 21.472s
 
-OK (skipped=45)
+OK (skipped=44)
