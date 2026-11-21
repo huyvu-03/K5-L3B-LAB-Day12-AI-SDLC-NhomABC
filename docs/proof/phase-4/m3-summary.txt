@@ -1,0 +1,10 @@
+commit: 4156baf
+regression: rc=0 | Ran 228 tests in 19.805s / OK (skipped=45)
+check_team: rc=0 | OK: 6 thành viên: huyvu-03, QuangNEU, ththanh8888, NhMinh-2610, thanhvu101, K0heii
+determinism: OK
+bench-run1: OK missing=[] {'avg_fps': 9141.47, 'p1_low_fps': 5126.24, 'frames': 274245, 'measured_s': 30.0, 'load_ms': 0.66}
+bench-run2: OK missing=[] {'avg_fps': 9209.68, 'p1_low_fps': 6064.42, 'frames': 276291, 'measured_s': 30.0, 'load_ms': 0.67}
+soak-run1: OK days_completed=10 crashes=0 duration_s=0.463
+soak-run2: OK days_completed=10 crashes=0 duration_s=0.467
+soak repeatable (bỏ duration_s): OK
+RESULT: ALL OK

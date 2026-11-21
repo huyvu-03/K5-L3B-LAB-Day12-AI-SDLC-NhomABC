@@ -1,0 +1,5 @@
+# Tính tất định P1–P3 (cùng seed, chạy 2 lần, so sánh từng byte)
+g: IDENTICAL (2072965 bytes)
+q: IDENTICAL (37942 bytes)
+d: IDENTICAL (602537 bytes)
+kho: IDENTICAL (13 bytes)

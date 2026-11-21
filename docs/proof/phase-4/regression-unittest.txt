@@ -1,0 +1,349 @@
+{"avg_fps": 9672.05, "p1_low_fps": 4993.13, "frames": 1935, "measured_s": 0.2, "load_ms": 0.71}
+{"avg_fps": 9199.73, "p1_low_fps": 7017.54, "frames": 9200, "measured_s": 1.0, "load_ms": 0.56}
+{"avg_fps": 9377.5, "p1_low_fps": 5718.59, "frames": 1876, "measured_s": 0.2, "load_ms": 0.59}
+test_bench_cmd_declared_in_contract (test_bench_m3.BenchContract.test_bench_cmd_declared_in_contract) ... ok
+test_bench_cmd_full_30s (test_bench_m3.BenchContract.test_bench_cmd_full_30s) ... skipped 'đặt P4_FULL=1 để chạy bench chuẩn 30 s'
+test_proof_file_measured_30s (test_bench_m3.BenchProof.test_proof_file_measured_30s) ... skipped 'đặt P4_STRICT_PROOF=1 để bắt buộc bằng chứng đo ≈ 30 s'
+test_proof_file_schema (test_bench_m3.BenchProof.test_proof_file_schema) ... ok
+test_missing_key_detected (test_bench_m3.BenchSchemaUnit.test_missing_key_detected) ... ok
+test_valid_sample_passes (test_bench_m3.BenchSchemaUnit.test_valid_sample_passes) ... ok
+test_wrong_duration_detected (test_bench_m3.BenchSchemaUnit.test_wrong_duration_detected) ... ok
+test_wrong_type_detected (test_bench_m3.BenchSchemaUnit.test_wrong_type_detected) ... ok
+test_bad_args_exit_2 (test_bench_m3.BenchShort.test_bad_args_exit_2) ... duration phải > 0 và warmup >= 0
+ok
+test_out_dir_is_created (test_bench_m3.BenchShort.test_out_dir_is_created) ... ok
+test_short_bench_writes_five_keys (test_bench_m3.BenchShort.test_short_bench_writes_five_keys) ... ok
+test_control_standalone_quan_with_same_stock_can_order_out_of_plan_dish (test_day_m3_integration.DayPlanFilterWithCustomers.test_control_standalone_quan_with_same_stock_can_order_out_of_plan_dish) ... skipped 'Contract v1.2 breaking change: counting-stock fixture replaced by v1.2 tests (see CHANGELOG.md)'
+test_day1_customers_only_order_planned_dishes (test_day_m3_integration.DayPlanFilterWithCustomers.test_day1_customers_only_order_planned_dishes) ... skipped 'Contract v1.2 breaking change: counting-stock fixture replaced by v1.2 tests (see CHANGELOG.md)'
+test_day1_quan_opens_with_handover_stock_and_first_customer_at_120 (test_day_m3_integration.DayPlanFilterWithCustomers.test_day1_quan_opens_with_handover_stock_and_first_customer_at_120) ... skipped 'Contract v1.2 breaking change: counting-stock fixture replaced by v1.2 tests (see CHANGELOG.md)'
+test_day_is_deterministic_with_customers (test_day_m3_integration.DayPlanFilterWithCustomers.test_day_is_deterministic_with_customers) ... skipped 'Contract v1.2 breaking change: counting-stock fixture replaced by v1.2 tests (see CHANGELOG.md)'
+test_cli_day_1_and_byte_determinism (test_day_shop_pause_m4.DayShopPauseCLIBlackBox.test_cli_day_1_and_byte_determinism)
+CLI `--mode day --days 1`: chạy đủ gather -> quan -> shop -> days_complete và tất định từng byte. ... skipped 'Contract v1.2 breaking change: counting-stock fixture replaced by v1.2 tests (see CHANGELOG.md)'
+test_cli_day_2_upgrades_effective_on_day_2 (test_day_shop_pause_m4.DayShopPauseCLIBlackBox.test_cli_day_2_upgrades_effective_on_day_2)
+CLI `--mode day --days 2`: mua oxygen & hp ở Shop Ngày 1 -> có hiệu lực ở Ngày 2 (2700 oxy, 4 HP). ... skipped 'Contract v1.2 breaking change: counting-stock fixture replaced by v1.2 tests (see CHANGELOG.md)'
+test_cli_day_3_spawns_second_crocodile_and_faint_opens_empty_quan (test_day_shop_pause_m4.DayShopPauseCLIBlackBox.test_cli_day_3_spawns_second_crocodile_and_faint_opens_empty_quan)
+Ghép M1 ↔ M4: Ngày 1–2 có 1 Cá Sấu (M1), Ngày 3 có 2 Cá Sấu (M1, M2); ngất vẫn mở quán kho rỗng. ... skipped 'Contract v1.2 breaking change: counting-stock fixture replaced by v1.2 tests (see CHANGELOG.md)'
+test_cli_day_quan_stock_conflict_exit_2 (test_day_shop_pause_m4.DayShopPauseCLIBlackBox.test_cli_day_quan_stock_conflict_exit_2)
+CLI `--mode day`: đơn reserved trong scenario.quan vượt kho thực lúc mở quán -> mã thoát 2. ... ok
+test_cli_pause_and_resume_all_3_modes (test_day_shop_pause_m4.DayShopPauseCLIBlackBox.test_cli_pause_and_resume_all_3_modes)
+CLI Pause/Resume hoạt động ở cả 3 mode gather, quan, day. ... ok
+test_ac_p2_m4_01_02_pause_and_resume_in_gather_and_quan (test_day_shop_pause_m4.PauseM4Tests.test_ac_p2_m4_01_02_pause_and_resume_in_gather_and_quan)
+AC-P2-M4-01/02: Pause đóng băng sim_tick/timer và bỏ qua hành động; Resume chạy ngay trong bước đó. ... ok
+test_ac_p2_m4_03_pause_in_shop_freezes_timer_and_ignores_buy (test_day_shop_pause_m4.ShopAndDayM4Tests.test_ac_p2_m4_03_pause_in_shop_freezes_timer_and_ignores_buy)
+AC-P2-M4-03: Pause trong Shop đóng băng 600 tick và bỏ qua buy/shop_done. ... ok
+test_ac_p2_m4_04_05_06_shop_upgrades_failures_and_closing_order (test_day_shop_pause_m4.ShopAndDayM4Tests.test_ac_p2_m4_04_05_06_shop_upgrades_failures_and_closing_order)
+AC-P2-M4-04/05/06: Mua oxygen/hp, giữ earned/score, buy_failed, buy trước shop_done ở bước cuối. ... ok
+test_ac_p2_m4_06_shop_auto_closes_after_600_ticks (test_day_shop_pause_m4.ShopAndDayM4Tests.test_ac_p2_m4_06_shop_auto_closes_after_600_ticks)
+AC-P2-M4-06: Shop tự đóng sau đúng 600 tick với shop_end(reason:'time'). ... ok
+test_ac_p2_m4_07_08_multiday_upgrades_apply_on_day_2_and_clear_stock (test_day_shop_pause_m4.ShopAndDayM4Tests.test_ac_p2_m4_07_08_multiday_upgrades_apply_on_day_2_and_clear_stock)
+AC-P2-M4-07/08: Mua oxygen+hp ở Ngày 1 -> có hiệu lực đúng ở Ngày 2 (2700 oxy, 4 HP), bỏ kho dư. ... ok
+test_ac_p2_m4_09_determinism_and_full_day_performance (test_day_shop_pause_m4.ShopAndDayM4Tests.test_ac_p2_m4_09_determinism_and_full_day_performance)
+AC-P2-M4-09: Một Ngày trọn vẹn (≤ 22.200 tick) chạy nhanh << 20 s và tất định từng byte. ... ok
+test_ac_p3_m4_01_fresh_100_keeps_full_price (test_freshness_m4_v12.FreshnessPricingM4V12.test_ac_p3_m4_01_fresh_100_keeps_full_price)
+AC-P3-M4-01: Nấu ca_loc_nuong_trui: fresh=100 (không hao) -> 60; sau 1 tick hao 1/240 -> 59. ... ok
+test_ac_p3_m4_02_04_05_06_avg_fresh_price_tip_sorted_items_and_removal (test_freshness_m4_v12.FreshnessPricingM4V12.test_ac_p3_m4_02_04_05_06_avg_fresh_price_tip_sorted_items_and_removal)
+AC-P3-M4-02/04/05/06: Sau 60 tick (-0.25), avg=85 -> base_price=102, tip=20, items sắp (kind, id_key), loại đúng id. ... ok
+test_ac_p3_m4_03_exact_integer_floor_no_rounding_up (test_freshness_m4_v12.FreshnessPricingM4V12.test_ac_p3_m4_03_exact_integer_floor_no_rounding_up)
+AC-P3-M4-03: avg_fresh=97.5 với giá 60 -> floor(58.5) = 58 (không làm tròn lên 59). ... ok
+test_ac_p3_m4_07_shop_no_decay_and_day_item_instance_handover (test_freshness_m4_v12.FreshnessPricingM4V12.test_ac_p3_m4_07_shop_no_decay_and_day_item_instance_handover)
+AC-P3-M4-07: Shop giữ nguyên fresh của mảng cá thể qua 600 tick; DaySim chuyển kho cá thể sang Shop không hao. ... ok
+test_exact_price_floor_and_tip (test_freshness_v12_m6.FreshnessHelperM6.test_exact_price_floor_and_tip) ... ok
+test_exact_threshold_30_and_decay_units (test_freshness_v12_m6.FreshnessHelperM6.test_exact_threshold_30_and_decay_units) ... ok
+test_inventory_v12_read_write_and_reject_counting_schema (test_freshness_v12_m6.InventoryAndScenarioV12M6.test_inventory_v12_read_write_and_reject_counting_schema) ... ok
+test_scenario_v12_valid_and_conflicts (test_freshness_v12_m6.InventoryAndScenarioV12M6.test_scenario_v12_valid_and_conflicts) ... ok
+test_choking_counts_first_empty_tick_and_repeats (test_gather_m1.GatherM1.test_choking_counts_first_empty_tick_and_repeats) ... ok
+test_faint_empties_inventory_before_docking_or_timeout (test_gather_m1.GatherM1.test_faint_empties_inventory_before_docking_or_timeout) ... skipped 'Contract v1.2 breaking change: counting-stock fixture replaced by v1.2 tests (see CHANGELOG.md)'
+test_surfacing_on_choke_tick_resets_counter_and_caps_refill (test_gather_m1.GatherM1.test_surfacing_on_choke_tick_resets_counter_and_caps_refill) ... ok
+test_water_crossings_use_position_after_movement (test_gather_m1.GatherM1.test_water_crossings_use_position_after_movement) ... ok
+test_chase_at_detection_boundary_and_exit_in_shallow_water (test_gather_m1_p2.GatherMonstersPhase2.test_chase_at_detection_boundary_and_exit_in_shallow_water) ... ok
+test_default_population_is_selected_by_day (test_gather_m1_p2.GatherMonstersPhase2.test_default_population_is_selected_by_day) ... ok
+test_hit_tie_break_lifo_recoil_and_invulnerability (test_gather_m1_p2.GatherMonstersPhase2.test_hit_tie_break_lifo_recoil_and_invulnerability) ... skipped 'Contract v1.2 breaking change: counting-stock fixture replaced by v1.2 tests (see CHANGELOG.md)'
+test_lethal_hit_drops_remaining_hold_and_opens_quan (test_gather_m1_p2.GatherMonstersPhase2.test_lethal_hit_drops_remaining_hold_and_opens_quan) ... skipped 'Contract v1.2 breaking change: counting-stock fixture replaced by v1.2 tests (see CHANGELOG.md)'
+test_patrol_switches_waypoint_after_arriving (test_gather_m1_p2.GatherMonstersPhase2.test_patrol_switches_waypoint_after_arriving) ... ok
+test_harvested_item_first_decays_on_the_following_tick (test_gather_m1_p3.GatherFreshnessPhase3.test_harvested_item_first_decays_on_the_following_tick) ... ok
+test_monster_hit_and_lethal_faint_drop_aged_items_in_lifo_order (test_gather_m1_p3.GatherFreshnessPhase3.test_monster_hit_and_lethal_faint_drop_aged_items_in_lifo_order) ... ok
+test_pause_freezes_freshness_until_resume (test_gather_m1_p3.GatherFreshnessPhase3.test_pause_freezes_freshness_until_resume) ... ok
+test_spoilage_crossing_fires_once_in_id_order_without_reordering_hold (test_gather_m1_p3.GatherFreshnessPhase3.test_spoilage_crossing_fires_once_in_id_order_without_reordering_hold) ... ok
+test_spoilage_precedes_choke_and_faint (test_gather_m1_p3.GatherFreshnessPhase3.test_spoilage_precedes_choke_and_faint) ... ok
+test_ac_m2_01_gather_surface_node_success (test_gather_m2.GatherM2.test_ac_m2_01_gather_surface_node_success)
+AC-M2-01: Hái nút mặt nước thành công. ... skipped 'Contract v1.2 breaking change: counting-stock fixture replaced by v1.2 tests (see CHANGELOG.md)'
+test_ac_m2_02_node_regrown_event (test_gather_m2.GatherM2.test_ac_m2_02_node_regrown_event)
+AC-M2-02: Nút mọc lại phát event node_regrown. ... ok
+test_ac_m2_03_hold_full_on_gather (test_gather_m2.GatherM2.test_ac_m2_03_hold_full_on_gather)
+AC-M2-03: Giỏ đầy khi hái phát event hold_full. ... skipped 'Contract v1.2 breaking change: counting-stock fixture replaced by v1.2 tests (see CHANGELOG.md)'
+test_ac_m2_04_dock_priority_over_gather (test_gather_m2.GatherM2.test_ac_m2_04_dock_priority_over_gather)
+AC-M2-04: Ưu tiên cập bến trước hái khi trong dock. ... skipped 'Contract v1.2 breaking change: counting-stock fixture replaced by v1.2 tests (see CHANGELOG.md)'
+test_ac_m2_05_underwater_cannot_gather_surface_nodes (test_gather_m2.GatherM2.test_ac_m2_05_underwater_cannot_gather_surface_nodes)
+AC-M2-05: Ở dưới nước không hái được nút mặt nước. ... ok
+test_ac_m2_06_catch_fish_success (test_gather_m2.GatherM2.test_ac_m2_06_catch_fish_success)
+AC-M2-06: Bắt đàn cá dưới nước thành công. ... skipped 'Contract v1.2 breaking change: counting-stock fixture replaced by v1.2 tests (see CHANGELOG.md)'
+test_ac_m2_07_hold_full_on_catch (test_gather_m2.GatherM2.test_ac_m2_07_hold_full_on_catch)
+AC-M2-07: Bắt cá thiếu chỗ phát event hold_full, giữ đàn cá, không hồi chiêu. ... skipped 'Contract v1.2 breaking change: counting-stock fixture replaced by v1.2 tests (see CHANGELOG.md)'
+test_ac_m2_08_surface_or_cd_cannot_catch (test_gather_m2.GatherM2.test_ac_m2_08_surface_or_cd_cannot_catch)
+AC-M2-08: Ở mặt nước hoặc đang cooldown thì không bắt cá. ... ok
+test_ac_m2_09_tie_break_smallest_id (test_gather_m2.GatherM2.test_ac_m2_09_tie_break_smallest_id)
+AC-M2-09: Khi bằng khoảng cách, chọn ID nhỏ nhất. ... ok
+test_ac_m2_10_inventory_output_file (test_gather_m2.GatherM2.test_ac_m2_10_inventory_output_file)
+AC-M2-10: Ghi file kho đúng format, sắp xếp key, bỏ count 0. ... skipped 'Contract v1.2 breaking change: counting-stock fixture replaced by v1.2 tests (see CHANGELOG.md)'
+test_ac_p2_m2_01_fish_swims_at_correct_speed (test_gather_m2_p2.GatherM2Phase2.test_ac_p2_m2_01_fish_swims_at_correct_speed)
+AC-P2-M2-01: Cá bơi đúng tốc độ 1.5 m/s sau 60 tick (di chuyển được 1.5 m). ... ok
+test_ac_p2_m2_02_fish_turns_at_tick_120 (test_gather_m2_p2.GatherM2Phase2.test_ac_p2_m2_02_fish_turns_at_tick_120)
+AC-P2-M2-02: Đổi hướng ở bước bơi thứ 120. ... ok
+test_ac_p2_m2_03_elastic_reflection_at_boundary (test_gather_m2_p2.GatherM2Phase2.test_ac_p2_m2_03_elastic_reflection_at_boundary)
+AC-P2-M2-03: Phản xạ đàn hồi khi chạm biên x = 96. ... ok
+test_ac_p2_m2_04_fish_spawn_at_interval_360 (test_gather_m2_p2.GatherM2Phase2.test_ac_p2_m2_04_fish_spawn_at_interval_360)
+AC-P2-M2-04: Sinh cá theo chu kỳ 360 tick và phát event fish_spawned. ... ok
+test_ac_p2_m2_05_spawn_capped_at_max (test_gather_m2_p2.GatherM2Phase2.test_ac_p2_m2_05_spawn_capped_at_max)
+AC-P2-M2-05: Không sinh cá khi đã chạm trần fish_max = 12. ... ok
+test_ac_p2_m2_06_spawn_clearance_greater_than_one_meter (test_gather_m2_p2.GatherM2Phase2.test_ac_p2_m2_06_spawn_clearance_greater_than_one_meter)
+AC-P2-M2-06: Đàn cá mới sinh cách mọi đàn đang sống > 1.0 m. ... ok
+test_ac_p2_m2_07_gather_new_keo_neo_node (test_gather_m2_p2.GatherM2Phase2.test_ac_p2_m2_07_gather_new_keo_neo_node)
+AC-P2-M2-07: Hái bông kèo nèo tại nút N5 thu được keo_neo. ... skipped 'Contract v1.2 breaking change: counting-stock fixture replaced by v1.2 tests (see CHANGELOG.md)'
+test_ac_p2_m2_08_catch_new_ca_keo_species (test_gather_m2_p2.GatherM2Phase2.test_ac_p2_m2_08_catch_new_ca_keo_species)
+AC-P2-M2-08: Bắt cá kèo (ca_keo) thu được sản lượng yield = 2. ... skipped 'Contract v1.2 breaking change: counting-stock fixture replaced by v1.2 tests (see CHANGELOG.md)'
+test_ac_p2_m2_09_random_fish_false_stays_stationary (test_gather_m2_p2.GatherM2Phase2.test_ac_p2_m2_09_random_fish_false_stays_stationary)
+AC-P2-M2-09: Cờ random_fish: false giữ cá đứng yên và không sinh cá mới. ... ok
+test_ac_p2_m2_10_inventory_with_new_ingredients (test_gather_m2_p2.GatherM2Phase2.test_ac_p2_m2_10_inventory_with_new_ingredients)
+AC-P2-M2-10: File kho chấp nhận 6 loại nguyên liệu, bao gồm ca_keo và keo_neo. ... skipped 'Contract v1.2 breaking change: counting-stock fixture replaced by v1.2 tests (see CHANGELOG.md)'
+test_ac_p3_m2_01_id_allocation_on_gather_and_catch (test_gather_m2_p3.GatherM2Phase3.test_ac_p3_m2_01_id_allocation_on_gather_and_catch)
+AC-P3-M2-01: Cấp ID cá thể I1, I2... tăng dần khi hái nút mặt nước hoặc bắt cá. ... ok
+test_ac_p3_m2_02_id_sequence_persistent_across_phases_days (test_gather_m2_p3.GatherM2Phase3.test_ac_p3_m2_02_id_sequence_persistent_across_phases_days)
+AC-P3-M2-02: Chuỗi ID I1, I2... tăng liên tục xuyên ca/Ngày, không reset về 1. ... ok
+test_ac_p3_m2_03_freshness_starts_at_100 (test_gather_m2_p3.GatherM2Phase3.test_ac_p3_m2_03_freshness_starts_at_100)
+AC-P3-M2-03: Hàng mới hái/bắt có đúng fresh = 100.0 ở tick thu hoạch. ... ok
+test_ac_p3_m2_04_decay_rate_half_point_per_second (test_gather_m2_p3.GatherM2Phase3.test_ac_p3_m2_04_decay_rate_half_point_per_second)
+AC-P3-M2-04: Tốc độ hao tươi giỏ đúng 0.5 điểm/giây (sau 60 tick giảm từ 100.0 xuống 99.5). ... ok
+test_ac_p3_m2_05_spoiled_event_at_threshold_30 (test_gather_m2_p3.GatherM2Phase3.test_ac_p3_m2_05_spoiled_event_at_threshold_30)
+AC-P3-M2-05: Độ tươi rơi xuống < 30.0 bắn event spoiled (location: 'hold') đúng 1 lần. ... ok
+test_ac_p3_m2_06_multiple_spoiled_ordered_by_id (test_gather_m2_p3.GatherM2Phase3.test_ac_p3_m2_06_multiple_spoiled_ordered_by_id)
+AC-P3-M2-06: Nhiều cá thể cùng ươn thì bắn event spoiled theo thứ tự ID tăng dần. ... ok
+test_ac_p3_m2_07_spoiled_items_occupy_hold_capacity (test_gather_m2_p3.GatherM2Phase3.test_ac_p3_m2_07_spoiled_items_occupy_hold_capacity)
+AC-P3-M2-07: Hàng ươn (fresh < 30) vẫn chiếm 1 ô giỏ, giỏ đủ 12 cá thể ươn sẽ bắn hold_full khi hái. ... ok
+test_ac_p3_m2_08_multi_yield_creates_distinct_items (test_gather_m2_p3.GatherM2Phase3.test_ac_p3_m2_08_multi_yield_creates_distinct_items)
+AC-P3-M2-08: Bắt cá có yield > 1 (ca_keo yield 2) sinh đủ các cá thể riêng biệt kèm ID riêng. ... ok
+test_ac_p3_m2_09_faint_empties_hold_and_writes_empty_inventory (test_gather_m2_p3.GatherM2Phase3.test_ac_p3_m2_09_faint_empties_hold_and_writes_empty_inventory)
+AC-P3-M2-09: Ngất do ngạt làm rỗng giỏ và xuất file kho rỗng {"items": []}. ... ok
+test_ac_p3_m2_10_dock_writes_individual_items_inventory (test_gather_m2_p3.GatherM2Phase3.test_ac_p3_m2_10_dock_writes_individual_items_inventory)
+AC-P3-M2-10: Cập bến xuất file kho mảng cá thể đúng schema Contract v1.2. ... ok
+test_gather_to_quan_inventory_pipeline_deterministic (test_integration_m6.IntegrationAndDeterminismM6.test_gather_to_quan_inventory_pipeline_deterministic)
+Chạy 2 lần cùng seed luồng gather --inventory-out -> quan --inventory (v1.2): JSONL và kho giống từng byte. ... ok
+test_state_input_and_clean_stop (test_live.LiveServerTest.test_state_input_and_clean_stop) ... ok
+test_four_stage_flow_start_gather_quan_shop_and_pause (test_live_m5.LiveM5Test.test_four_stage_flow_start_gather_quan_shop_and_pause)
+Kiểm chứng luồng 4 màn hình qua HTTP: POST /start (day) -> gather -> quan -> shop (buy + shop_done) + pause. ... ok
+test_gather_hud_and_static_assets_serving (test_live_m5.LiveM5Test.test_gather_hud_and_static_assets_serving) ... ok
+test_gather_live_harvest_node_and_catch_fish (test_live_m5.LiveM5Test.test_gather_live_harvest_node_and_catch_fish)
+Kiểm chứng hái bụi ở mặt nước (E / interact) và bắt cá dưới nước (Space / catch) qua chonoi.live. ... ok
+test_phase4_bench_cli_outputs_five_fields (test_live_m5.LiveM5Test.test_phase4_bench_cli_outputs_five_fields)
+Phase 4 M5.1: chonoi.bench xuất đủ 5 trường avg_fps, p1_low_fps, frames, measured_s, load_ms. ... ok
+test_quan_live_hud_state_and_inputs (test_live_m5.LiveM5Test.test_quan_live_hud_state_and_inputs) ... ok
+test_full_cycle_is_deterministic (test_m3_m4_integration.CustomerKitchenIntegration.test_full_cycle_is_deterministic) ... skipped 'Contract v1.2 breaking change: counting-stock fixture replaced by v1.2 tests (see CHANGELOG.md)'
+test_second_customer_takes_next_free_table_and_holds_leftover_stock (test_m3_m4_integration.CustomerKitchenIntegration.test_second_customer_takes_next_free_table_and_holds_leftover_stock) ... skipped 'Contract v1.2 breaking change: counting-stock fixture replaced by v1.2 tests (see CHANGELOG.md)'
+test_served_customer_never_penalised_and_score_matches_formula (test_m3_m4_integration.CustomerKitchenIntegration.test_served_customer_never_penalised_and_score_matches_formula) ... skipped 'Contract v1.2 breaking change: counting-stock fixture replaced by v1.2 tests (see CHANGELOG.md)'
+test_stock_is_consumed_once_and_next_round_sees_empty_stock (test_m3_m4_integration.CustomerKitchenIntegration.test_stock_is_consumed_once_and_next_round_sees_empty_stock) ... skipped 'Contract v1.2 breaking change: counting-stock fixture replaced by v1.2 tests (see CHANGELOG.md)'
+test_bad_frames_raise (test_python_starter_units.Units.test_bad_frames_raise) ... ok
+test_catch_is_a_v10_button_and_attack_is_not (test_python_starter_units.Units.test_catch_is_a_v10_button_and_attack_is_not) ... ok
+test_id_allocator_continues_after_max (test_python_starter_units.Units.test_id_allocator_continues_after_max) ... ok
+test_id_sorting (test_python_starter_units.Units.test_id_sorting) ... ok
+test_input_edges_and_inherit (test_python_starter_units.Units.test_input_edges_and_inherit) ... ok
+test_live_inputs_keep_fast_tap_edge (test_python_starter_units.Units.test_live_inputs_keep_fast_tap_edge) ... ok
+test_session_steps_gather_and_dock (test_python_starter_units.Units.test_session_steps_gather_and_dock) ... ok
+test_c5_all_tables_busy_skips_round (test_quan_customers_m3.Arrivals.test_c5_all_tables_busy_skips_round) ... skipped 'Contract v1.2 breaking change: counting-stock fixture replaced by v1.2 tests (see CHANGELOG.md)'
+test_c5_first_customer_at_tick_120 (test_quan_customers_m3.Arrivals.test_c5_first_customer_at_tick_120) ... skipped 'Contract v1.2 breaking change: counting-stock fixture replaced by v1.2 tests (see CHANGELOG.md)'
+test_c5_reservation_released_by_patience_lets_next_round_order (test_quan_customers_m3.Arrivals.test_c5_reservation_released_by_patience_lets_next_round_order) ... skipped 'Contract v1.2 breaking change: counting-stock fixture replaced by v1.2 tests (see CHANGELOG.md)'
+test_c6_no_dish_when_stock_empty (test_quan_customers_m3.Arrivals.test_c6_no_dish_when_stock_empty) ... ok
+test_c6_picks_only_cookable_dishes (test_quan_customers_m3.Arrivals.test_c6_picks_only_cookable_dishes) ... skipped 'Contract v1.2 breaking change: counting-stock fixture replaced by v1.2 tests (see CHANGELOG.md)'
+test_c6_reserved_stock_is_not_available (test_quan_customers_m3.Arrivals.test_c6_reserved_stock_is_not_available) ... skipped 'Contract v1.2 breaking change: counting-stock fixture replaced by v1.2 tests (see CHANGELOG.md)'
+test_c8_deterministic_same_seed (test_quan_customers_m3.Arrivals.test_c8_deterministic_same_seed) ... skipped 'Contract v1.2 breaking change: counting-stock fixture replaced by v1.2 tests (see CHANGELOG.md)'
+test_c8_random_customers_false (test_quan_customers_m3.Arrivals.test_c8_random_customers_false) ... skipped 'Contract v1.2 breaking change: counting-stock fixture replaced by v1.2 tests (see CHANGELOG.md)'
+test_c7_no_new_customer_on_last_step (test_quan_customers_m3.Closing.test_c7_no_new_customer_on_last_step) ... skipped 'Contract v1.2 breaking change: counting-stock fixture replaced by v1.2 tests (see CHANGELOG.md)'
+test_c7_waiting_customer_leaves_at_closing_without_penalty (test_quan_customers_m3.Closing.test_c7_waiting_customer_leaves_at_closing_without_penalty) ... skipped 'Contract v1.2 breaking change: counting-stock fixture replaced by v1.2 tests (see CHANGELOG.md)'
+test_eating_customer_pays_immediately_at_closing (test_quan_customers_m3.Closing.test_eating_customer_pays_immediately_at_closing) ... ok
+test_eating_customer_pays_when_done_with_tip_reputation (test_quan_customers_m3.Closing.test_eating_customer_pays_when_done_with_tip_reputation) ... ok
+test_c1_customer_defaults (test_quan_customers_m3.DefaultsAndReservation.test_c1_customer_defaults) ... skipped 'Contract v1.2 breaking change: counting-stock fixture replaced by v1.2 tests (see CHANGELOG.md)'
+test_c1_reserved_follows_recipe_for_each_dish (test_quan_customers_m3.DefaultsAndReservation.test_c1_reserved_follows_recipe_for_each_dish) ... skipped 'Contract v1.2 breaking change: counting-stock fixture replaced by v1.2 tests (see CHANGELOG.md)'
+test_c3_patience_counts_down (test_quan_customers_m3.Patience.test_c3_patience_counts_down) ... skipped 'Contract v1.2 breaking change: counting-stock fixture replaced by v1.2 tests (see CHANGELOG.md)'
+test_c4_leaves_when_patience_runs_out (test_quan_customers_m3.Patience.test_c4_leaves_when_patience_runs_out) ... skipped 'Contract v1.2 breaking change: counting-stock fixture replaced by v1.2 tests (see CHANGELOG.md)'
+test_c4_leaving_drops_dish_of_that_order (test_quan_customers_m3.Patience.test_c4_leaving_drops_dish_of_that_order) ... skipped 'Contract v1.2 breaking change: counting-stock fixture replaced by v1.2 tests (see CHANGELOG.md)'
+test_c4_reputation_clamped_at_min (test_quan_customers_m3.Patience.test_c4_reputation_clamped_at_min) ... skipped 'Contract v1.2 breaking change: counting-stock fixture replaced by v1.2 tests (see CHANGELOG.md)'
+test_contract_has_v11_restaurant (test_quan_m3_v11.ContractV11.test_contract_has_v11_restaurant) ... ok
+test_c4_empty_plan_means_no_dish (test_quan_m3_v11.PlanFilter.test_c4_empty_plan_means_no_dish) ... ok
+test_c4_filter_applies_before_stock (test_quan_m3_v11.PlanFilter.test_c4_filter_applies_before_stock) ... ok
+test_c4_filter_does_not_touch_fixture_customers (test_quan_m3_v11.PlanFilter.test_c4_filter_does_not_touch_fixture_customers) ... ok
+test_c4_multi_dish_plan_only_picks_planned_dishes (test_quan_m3_v11.PlanFilter.test_c4_multi_dish_plan_only_picks_planned_dishes) ... ok
+test_c4_planned_dish_without_ingredients_gives_no_dish_even_if_others_cookable (test_quan_m3_v11.PlanFilter.test_c4_planned_dish_without_ingredients_gives_no_dish_even_if_others_cookable) ... ok
+test_c4_same_seed_same_choices (test_quan_m3_v11.PlanFilter.test_c4_same_seed_same_choices) ... ok
+test_c4_unknown_dish_in_plan_is_rejected (test_quan_m3_v11.PlanFilter.test_c4_unknown_dish_in_plan_is_rejected) ... ok
+test_c5_no_quota_customers_keep_ordering_beyond_planned_servings (test_quan_m3_v11.PlanFilter.test_c5_no_quota_customers_keep_ordering_beyond_planned_servings) ... ok
+test_c7_default_none_matches_unfiltered_behaviour (test_quan_m3_v11.PlanFilter.test_c7_default_none_matches_unfiltered_behaviour) ... ok
+test_c2_lau_mam_needs_every_ingredient (test_quan_m3_v11.Reservation.test_c2_lau_mam_needs_every_ingredient) ... ok
+test_c2_lau_mam_reserves_four_kinds (test_quan_m3_v11.Reservation.test_c2_lau_mam_reserves_four_kinds) ... ok
+test_c2_standalone_quan_offers_all_six_dishes (test_quan_m3_v11.Reservation.test_c2_standalone_quan_offers_all_six_dishes) ... ok
+test_c3_reservations_accumulate_across_customers (test_quan_m3_v11.Reservation.test_c3_reservations_accumulate_across_customers) ... ok
+test_c3_third_customer_only_when_stock_left_after_holds (test_quan_m3_v11.Reservation.test_c3_third_customer_only_when_stock_left_after_holds) ... ok
+test_c1_all_tables_busy_skips_round_without_no_dish (test_quan_m3_v11.Tables.test_c1_all_tables_busy_skips_round_without_no_dish) ... ok
+test_c1_customers_take_lowest_free_table_in_order (test_quan_m3_v11.Tables.test_c1_customers_take_lowest_free_table_in_order) ... ok
+test_c1_fixture_customer_on_t3_keeps_lower_tables_free (test_quan_m3_v11.Tables.test_c1_fixture_customer_on_t3_keeps_lower_tables_free) ... ok
+test_c1_freed_table_is_reused_by_next_round (test_quan_m3_v11.Tables.test_c1_freed_table_is_reused_by_next_round) ... ok
+test_c2_decay_clamps_at_zero (test_quan_m3_v12.Decay.test_c2_decay_clamps_at_zero) ... ok
+test_c2_handed_over_stock_not_decayed_before_first_step (test_quan_m3_v12.Decay.test_c2_handed_over_stock_not_decayed_before_first_step) ... ok
+test_c2_pause_freezes_decay (test_quan_m3_v12.Decay.test_c2_pause_freezes_decay) ... ok
+test_c2_quan_decay_is_quarter_point_per_second (test_quan_m3_v12.Decay.test_c2_quan_decay_is_quarter_point_per_second) ... ok
+test_c2_reserved_stock_decays_too (test_quan_m3_v12.Decay.test_c2_reserved_stock_decays_too) ... ok
+test_c8_same_seed_same_events_and_state (test_quan_m3_v12.Determinism.test_c8_same_seed_same_events_and_state) ... ok
+test_c6_leaving_customer_releases_reserved_items (test_quan_m3_v12.Leaving.test_c6_leaving_customer_releases_reserved_items) ... ok
+test_c7_consume_reserved_takes_exact_ids_sorted_by_kind_then_id (test_quan_m3_v12.M4Hooks.test_c7_consume_reserved_takes_exact_ids_sorted_by_kind_then_id) ... ok
+test_c7_stock_items_out_returns_handover_array (test_quan_m3_v12.M4Hooks.test_c7_stock_items_out_returns_handover_array) ... ok
+test_c5_affected_orders_processed_by_order_tick_then_table (test_quan_m3_v12.ReReserve.test_c5_affected_orders_processed_by_order_tick_then_table) ... ok
+test_c5_item_reserved_at_arrival_spoils_while_waiting (test_quan_m3_v12.ReReserve.test_c5_item_reserved_at_arrival_spoils_while_waiting) ... ok
+test_c5_not_enough_fresh_items_becomes_unfulfillable (test_quan_m3_v12.ReReserve.test_c5_not_enough_fresh_items_becomes_unfulfillable) ... ok
+test_c5_retry_happens_only_once (test_quan_m3_v12.ReReserve.test_c5_retry_happens_only_once) ... ok
+test_c5_same_order_tick_breaks_tie_by_table_id (test_quan_m3_v12.ReReserve.test_c5_same_order_tick_breaks_tie_by_table_id) ... ok
+test_c5_spoiled_events_come_before_rereservation_effects (test_quan_m3_v12.ReReserve.test_c5_spoiled_events_come_before_rereservation_effects) ... ok
+test_c5_spoiled_reserved_item_is_replaced_by_next_freshest (test_quan_m3_v12.ReReserve.test_c5_spoiled_reserved_item_is_replaced_by_next_freshest) ... ok
+test_c5_unaffected_order_keeps_its_reservation (test_quan_m3_v12.ReReserve.test_c5_unaffected_order_keeps_its_reservation) ... ok
+test_c5_unfulfillable_customer_waits_until_patience_runs_out (test_quan_m3_v12.ReReserve.test_c5_unfulfillable_customer_waits_until_patience_runs_out) ... ok
+test_c5_whole_reservation_is_released_and_redone (test_quan_m3_v12.ReReserve.test_c5_whole_reservation_is_released_and_redone) ... ok
+test_c4_explicit_reserved_ids_are_respected (test_quan_m3_v12.Reservation.test_c4_explicit_reserved_ids_are_respected) ... ok
+test_c4_fixture_orders_allocated_by_order_tick_then_table (test_quan_m3_v12.Reservation.test_c4_fixture_orders_allocated_by_order_tick_then_table) ... ok
+test_c4_new_customer_reserves_freshest_unspoiled_unreserved (test_quan_m3_v12.Reservation.test_c4_new_customer_reserves_freshest_unspoiled_unreserved) ... ok
+test_c4_picks_freshest_then_lowest_id (test_quan_m3_v12.Reservation.test_c4_picks_freshest_then_lowest_id) ... ok
+test_c4_recipe_with_several_kinds_and_counts (test_quan_m3_v12.Reservation.test_c4_recipe_with_several_kinds_and_counts) ... ok
+test_c4_same_order_tick_ties_by_table_id (test_quan_m3_v12.Reservation.test_c4_same_order_tick_ties_by_table_id) ... ok
+test_c4_spoiled_and_reserved_items_do_not_count_as_available (test_quan_m3_v12.Reservation.test_c4_spoiled_and_reserved_items_do_not_count_as_available) ... ok
+test_c3_already_spoiled_item_emits_nothing (test_quan_m3_v12.Spoiled.test_c3_already_spoiled_item_emits_nothing) ... ok
+test_c3_exact_30_spoils_on_first_step (test_quan_m3_v12.Spoiled.test_c3_exact_30_spoils_on_first_step) ... ok
+test_c3_simultaneous_spoils_ordered_by_id (test_quan_m3_v12.Spoiled.test_c3_simultaneous_spoils_ordered_by_id) ... ok
+test_c3_spoiled_emitted_exactly_once (test_quan_m3_v12.Spoiled.test_c3_spoiled_emitted_exactly_once) ... ok
+test_c3_spoiled_item_keeps_its_slot (test_quan_m3_v12.Spoiled.test_c3_spoiled_item_keeps_its_slot) ... ok
+test_c3_threshold_is_exact_not_float (test_quan_m3_v12.Spoiled.test_c3_threshold_is_exact_not_float) ... ok
+test_c1_count_stock_still_supported (test_quan_m3_v12.StockSchema.test_c1_count_stock_still_supported) ... ok
+test_c1_snapshot_stock_is_array_of_items_sorted_by_id (test_quan_m3_v12.StockSchema.test_c1_snapshot_stock_is_array_of_items_sorted_by_id) ... ok
+test_ac_m4_01_interact_edge_and_tiebreak_no_fallback (test_quan_m4.QuanM4BlackBox.test_ac_m4_01_interact_edge_and_tiebreak_no_fallback)
+AC-M4-01: Đúng mép interact_radius (<=), hòa ưu tiên bếp trước bàn và không fallback khi bận. ... skipped 'Contract v1.2 breaking change: counting-stock fixture replaced by v1.2 tests (see CHANGELOG.md)'
+test_ac_m4_02_cook_started_consumes_stock_and_sorts_items (test_quan_m4.QuanM4BlackBox.test_ac_m4_02_cook_started_consumes_stock_and_sorts_items)
+AC-M4-02: Bắt đầu nấu trừ đúng kho, items sắp theo kind, khách sang assigned và nhả reserved. ... skipped 'Contract v1.2 breaking change: counting-stock fixture replaced by v1.2 tests (see CHANGELOG.md)'
+test_ac_m4_03_dish_ready_and_ready_ticks_increment (test_quan_m4.QuanM4BlackBox.test_ac_m4_03_dish_ready_and_ready_ticks_increment)
+AC-M4-03: Món chín đúng tick về 0 với ready_ticks=0, chỉ tăng ready_ticks từ tick sau, không cháy. ... ok
+test_ac_m4_04_dish_picked_moves_to_hand_and_resets_stove (test_quan_m4.QuanM4BlackBox.test_ac_m4_04_dish_picked_moves_to_hand_and_resets_stove)
+AC-M4-04: Bưng món từ bếp ready lên hand khi tay trống, bếp về idle. ... ok
+test_ac_m4_05_served_tip_boundary_and_zero_patience_tick (test_quan_m4.QuanM4BlackBox.test_ac_m4_05_served_tip_boundary_and_zero_patience_tick)
+AC-M4-05: Tip đạt đúng biên 50% sau Bước 1, thiếu 1 tick -> tip 0, phục vụ đúng tick patience=0 vẫn hợp lệ. ... ok
+test_ac_m4_06_paid_finished_eating_reputation_clamp_and_score (test_quan_m4.QuanM4BlackBox.test_ac_m4_06_paid_finished_eating_reputation_clamp_and_score)
+AC-M4-06: Ăn xong trả tiền, tip > 0 cộng tip_reputation (kẹp trần 5.0), tip = 0 giữ nguyên uy tín. ... ok
+test_ac_m4_07_closing_served_at_last_tick_and_waiting_no_penalty (test_quan_m4.QuanM4BlackBox.test_ac_m4_07_closing_served_at_last_tick_and_waiting_no_penalty)
+AC-M4-07: Hết ca — khách vừa được phục vụ ở tick cuối vẫn paid(closing); khách chờ rời closing không trừ uy tín. ... ok
+test_ac_m4_08_patience_leave_cleans_stove_and_hand_no_refund (test_quan_m4.QuanM4BlackBox.test_ac_m4_08_patience_leave_cleans_stove_and_hand_no_refund)
+AC-M4-08: Khách hết kiên nhẫn rời đi hủy món đang nấu/ready hoặc trên hand, không hoàn kho, kẹp uy tín >= 0. ... ok
+test_full_kitchen_loop_and_determinism (test_quan_m4.QuanM4BlackBox.test_full_kitchen_loop_and_determinism)
+Vòng đầy đủ: nấu -> chín -> bưng -> phục vụ -> ăn xong trả tiền, cùng seed giống từng byte. ... skipped 'Contract v1.2 breaking change: counting-stock fixture replaced by v1.2 tests (see CHANGELOG.md)'
+test_m3_m4_integrated_spawn_cook_serve_pay_loop (test_quan_m4.QuanM4BlackBox.test_m3_m4_integrated_spawn_cook_serve_pay_loop)
+Ghép M3 ↔ M4: khách tự sinh (customer_arrived) -> nấu -> chín -> bưng -> phục vụ -> ăn xong -> paid. ... skipped 'Contract v1.2 breaking change: counting-stock fixture replaced by v1.2 tests (see CHANGELOG.md)'
+test_carry_limit_blocks_pick_and_wrong_order_id_blocks_serve (test_quan_m4.QuanM4UnitEdges.test_carry_limit_blocks_pick_and_wrong_order_id_blocks_serve)
+Tay đang cầm món không bưng thêm được; đưa sai order_id cho bàn bị bỏ qua. ... ok
+test_cook_picks_oldest_order_tick_then_table_id_key (test_quan_m4.QuanM4UnitEdges.test_cook_picks_oldest_order_tick_then_table_id_key)
+Đơn reserved cũ nhất chọn theo (order_tick, id_key(table_id)): T2 đứng trước T10. ... ok
+test_assigned_stove_hand_conflicts_exit_2 (test_scenario_m6.ScenarioQuanValidationM6.test_assigned_stove_hand_conflicts_exit_2) ... ok
+test_eating_and_misc_conflicts_exit_2 (test_scenario_m6.ScenarioQuanValidationM6.test_eating_and_misc_conflicts_exit_2) ... ok
+test_reserved_mismatch_or_exceeds_stock_exit_2 (test_scenario_m6.ScenarioQuanValidationM6.test_reserved_mismatch_or_exceeds_stock_exit_2) ... ok
+test_valid_assigned_cooking_ready_hand (test_scenario_m6.ScenarioQuanValidationM6.test_valid_assigned_cooking_ready_hand) ... ok
+test_valid_eating_and_unfulfillable (test_scenario_m6.ScenarioQuanValidationM6.test_valid_eating_and_unfulfillable) ... ok
+test_valid_reserved_with_stock_and_inventory (test_scenario_m6.ScenarioQuanValidationM6.test_valid_reserved_with_stock_and_inventory) ... ok
+test_cli_day_mode_and_days_flag (test_scenario_v11_m6.ContractV11AndScenarioM6.test_cli_day_mode_and_days_flag) ... ok
+test_day_scenario_valid_and_conflicts_exit_2 (test_scenario_v11_m6.ContractV11AndScenarioM6.test_day_scenario_valid_and_conflicts_exit_2) ... ok
+test_inputs_v11_pause_shop_done_buy (test_scenario_v11_m6.ContractV11AndScenarioM6.test_inputs_v11_pause_shop_done_buy) ... ok
+test_con_01_ticks_zero_and_end_line (test_smoke_p1.Contract.test_con_01_ticks_zero_and_end_line) ... ok
+test_con_02_deterministic_bytes (test_smoke_p1.Contract.test_con_02_deterministic_bytes) ... ok
+test_con_03_bad_input_exit_2 (test_smoke_p1.Contract.test_con_03_bad_input_exit_2) ... Exception in thread Thread-214 (_readerthread):
+Traceback (most recent call last):
+  File "C:\Users\ADMIN\AppData\Local\Programs\Python\Python313\Lib\threading.py", line 1044, in _bootstrap_inner
+    self.run()
+    ~~~~~~~~^^
+  File "C:\Users\ADMIN\AppData\Local\Programs\Python\Python313\Lib\threading.py", line 995, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ADMIN\AppData\Local\Programs\Python\Python313\Lib\subprocess.py", line 1615, in _readerthread
+    buffer.append(fh.read())
+                  ~~~~~~~^^
+  File "C:\Users\ADMIN\AppData\Local\Programs\Python\Python313\Lib\encodings\cp1252.py", line 23, in decode
+    return codecs.charmap_decode(input,self.errors,decoding_table)[0]
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeDecodeError: 'charmap' codec can't decode byte 0x9d in position 35: character maps to <undefined>
+Exception in thread Thread-216 (_readerthread):
+Traceback (most recent call last):
+  File "C:\Users\ADMIN\AppData\Local\Programs\Python\Python313\Lib\threading.py", line 1044, in _bootstrap_inner
+    self.run()
+    ~~~~~~~~^^
+  File "C:\Users\ADMIN\AppData\Local\Programs\Python\Python313\Lib\threading.py", line 995, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ADMIN\AppData\Local\Programs\Python\Python313\Lib\subprocess.py", line 1615, in _readerthread
+    buffer.append(fh.read())
+                  ~~~~~~~^^
+  File "C:\Users\ADMIN\AppData\Local\Programs\Python\Python313\Lib\encodings\cp1252.py", line 23, in decode
+    return codecs.charmap_decode(input,self.errors,decoding_table)[0]
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeDecodeError: 'charmap' codec can't decode byte 0x9d in position 35: character maps to <undefined>
+ok
+test_con_03_old_and_future_modes_rejected (test_smoke_p1.Contract.test_con_03_old_and_future_modes_rejected) ... ok
+test_gather_snapshot_has_gather_fields (test_smoke_p1.Contract.test_gather_snapshot_has_gather_fields) ... ok
+test_scenario_out_of_domain_exit_2 (test_smoke_p1.Contract.test_scenario_out_of_domain_exit_2) ... Exception in thread Thread-234 (_readerthread):
+Traceback (most recent call last):
+  File "C:\Users\ADMIN\AppData\Local\Programs\Python\Python313\Lib\threading.py", line 1044, in _bootstrap_inner
+    self.run()
+    ~~~~~~~~^^
+  File "C:\Users\ADMIN\AppData\Local\Programs\Python\Python313\Lib\threading.py", line 995, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ADMIN\AppData\Local\Programs\Python\Python313\Lib\subprocess.py", line 1615, in _readerthread
+    buffer.append(fh.read())
+                  ~~~~~~~^^
+  File "C:\Users\ADMIN\AppData\Local\Programs\Python\Python313\Lib\encodings\cp1252.py", line 23, in decode
+    return codecs.charmap_decode(input,self.errors,decoding_table)[0]
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeDecodeError: 'charmap' codec can't decode byte 0x9d in position 23: character maps to <undefined>
+ok
+test_inv_01_gather_writes_inventory_quan_reads_it (test_smoke_p1.Integration.test_inv_01_gather_writes_inventory_quan_reads_it)
+Smoke 2 tiến trình (v1.2 kho cá thể): cập bến ở tick 0, quán đọc kho đúng id, kind, fresh. ... ok
+test_inv_01_not_written_when_tick_limit_first (test_smoke_p1.Integration.test_inv_01_not_written_when_tick_limit_first) ... ok
+test_inv_bad_schema_exit_2 (test_smoke_p1.Integration.test_inv_bad_schema_exit_2) ... ok
+test_inventory_and_scenario_stock_conflict (test_smoke_p1.Integration.test_inventory_and_scenario_stock_conflict) ... ok
+test_inventory_flags_mode_mismatch_exit_2 (test_smoke_p1.Integration.test_inventory_flags_mode_mismatch_exit_2) ... ok
+test_move_01_swim_speed_after_ramp (test_smoke_p1.Movement.test_move_01_swim_speed_after_ramp)
+Bỏ 6 tick tăng tốc rồi đo 60 tick: quãng ≈ swim_speed × 1 s (±0.1). Ngang, xuống, chéo (không nhanh hơn). ... ok
+test_move_02_heading_positive_is_down (test_smoke_p1.Movement.test_move_02_heading_positive_is_down) ... ok
+test_move_03_edge_clamp (test_smoke_p1.Movement.test_move_03_edge_clamp)
+Chặn từng mép của vùng nước, kể cả d không âm (không bay lên khỏi mặt nước) và đáy d = 30. ... ok
+test_move_mep_vel_ve_0 (test_smoke_p1.Movement.test_move_mep_vel_ve_0) ... ok
+test_move_ramp_doi_huong_trong_tran (test_smoke_p1.Movement.test_move_ramp_doi_huong_trong_tran)
+Đảo từ +speed sang -speed: vận tốc chạm mục tiêu sau tối đa ramp_max_ticks tick kể từ lúc đổi input. ... ok
+test_time_ends_gather_and_keeps_hold (test_smoke_p1.Movement.test_time_ends_gather_and_keeps_hold) ... ok
+test_khoi_sai_mode_exit_2 (test_smoke_p1.ScenarioModes.test_khoi_sai_mode_exit_2) ... ok
+test_quan_fixture_khong_hop_le_exit_2 (test_smoke_p1.ScenarioModes.test_quan_fixture_khong_hop_le_exit_2) ... ok
+test_quan_player_vel_hop_le (test_smoke_p1.ScenarioModes.test_quan_player_vel_hop_le) ... ok
+test_soak_cmd_declared (test_soak_m3.SoakContract.test_soak_cmd_declared) ... ok
+test_soak_cmd_via_subprocess (test_soak_m3.SoakContract.test_soak_cmd_via_subprocess) ... ok
+test_day5_to_day6_no_reset (test_soak_m3.SoakCrossDayState.test_day5_to_day6_no_reset) ... ok
+test_day6_to_10_repeat_day_plan_1_to_5 (test_soak_m3.SoakCrossDayState.test_day6_to_10_repeat_day_plan_1_to_5) ... ok
+test_deterministic_across_two_runs (test_soak_m3.SoakCrossDayState.test_deterministic_across_two_runs) ... ok
+test_earned_and_upgrades_never_decrease (test_soak_m3.SoakCrossDayState.test_earned_and_upgrades_never_decrease) ... ok
+test_id_counters_monotonic_no_reuse (test_soak_m3.SoakCrossDayState.test_id_counters_monotonic_no_reuse)
+Bộ cấp id không lùi về 1 sau D5→D6 (id cá thể xuyên suốt, không cấp lại). ... ok
+test_initial_state_carried_into_day1 (test_soak_m3.SoakCrossDayState.test_initial_state_carried_into_day1) ... ok
+test_money_never_negative (test_soak_m3.SoakCrossDayState.test_money_never_negative) ... ok
+test_ran_all_10_days (test_soak_m3.SoakCrossDayState.test_ran_all_10_days) ... ok
+test_proof_file (test_soak_m3.SoakProof.test_proof_file) ... skipped 'chưa có docs/proof/phase-4/soak.json'
+test_10_days_schema_and_counts (test_soak_m3.SoakSchema.test_10_days_schema_and_counts) ... ok
+test_bad_days_exit_2 (test_soak_m3.SoakSchema.test_bad_days_exit_2) ... lỗi: --days phải >= 1
+ok
+test_other_day_counts_complete (test_soak_m3.SoakSchema.test_other_day_counts_complete) ... ok
+test_repeat_same_seed_same_gameplay (test_soak_m3.SoakSchema.test_repeat_same_seed_same_gameplay) ... ok
+test_soak_10_days_deterministic_and_zero_crashes (test_soak_m4.SoakM4Tests.test_soak_10_days_deterministic_and_zero_crashes) ... ok
+test_good (test_team_check.TeamCheck.test_good) ... ok
+test_template_is_rejected (test_team_check.TeamCheck.test_template_is_rejected) ... ok
+test_too_few_members (test_team_check.TeamCheck.test_too_few_members) ... ok
+test_wrong_size_duplicate_and_outsider (test_team_check.TeamCheck.test_wrong_size_duplicate_and_outsider) ... ok
+
+----------------------------------------------------------------------
+Ran 228 tests in 19.805s
+
+OK (skipped=45)
