@@ -82,31 +82,36 @@ def _validate_gather(g):
     if not isinstance(nodes, list) or not nodes:
         raise BadInput("tuning.gather.nodes phải là mảng không rỗng")
     seen, kinds = set(), set()
+    allowed_node_kinds = ("bong_dien_dien", "bong_sung", "keo_neo")
     for n in nodes:
         if not isinstance(n, dict) or not isinstance(n.get("id"), str) or n["id"] in seen:
             raise BadInput("tuning.gather.nodes: mỗi nút cần id duy nhất")
         seen.add(n["id"])
-        if n.get("kind") not in ("bong_dien_dien", "bong_sung"):
-            raise BadInput(f"tuning.gather.nodes.{n['id']}: kind phải là bong_dien_dien hoặc bong_sung")
+        if n.get("kind") not in allowed_node_kinds:
+            raise BadInput(f"tuning.gather.nodes.{n['id']}: kind phải thuộc {allowed_node_kinds}")
         kinds.add(n["kind"])
         _pos_in(f"gather.nodes.{n['id']}.pos", n.get("pos"), b, ("x", "d"))
         if n["pos"][1] != 0:
             raise BadInput(f"tuning.gather.nodes.{n['id']}: nút hái nằm ở mặt nước (d = 0)")
-    if kinds != {"bong_dien_dien", "bong_sung"}:
-        raise BadInput("tuning.gather.nodes phải có ít nhất một nút mỗi loại (bong_dien_dien, bong_sung)")
+    if not {"bong_dien_dien", "bong_sung"} <= kinds:
+        raise BadInput("tuning.gather.nodes phải có ít nhất một nút mỗi loại cây")
     fish = g.get("fish_initial")
-    if not isinstance(fish, list) or len(fish) != 6:
-        raise BadInput("tuning.gather.fish_initial phải là danh sách đúng 6 đàn")
-    seen = set()
-    for f in fish:
-        if not isinstance(f, dict) or not isinstance(f.get("id"), str) or f["id"] in seen:
-            raise BadInput("tuning.gather.fish_initial: mỗi đàn cần id duy nhất")
-        seen.add(f["id"])
-        if f.get("kind") not in fy:
-            raise BadInput(f"tuning.gather.fish_initial.{f['id']}: kind phải thuộc fish_yield")
-        _pos_in(f"gather.fish_initial.{f['id']}.pos", f.get("pos"), b, ("x", "d"))
-        if f["pos"][1] <= g["surface_depth"]:
-            raise BadInput(f"tuning.gather.fish_initial.{f['id']}: đàn cá phải ở dưới nước")
+    if isinstance(fish, int) and not isinstance(fish, bool):
+        if fish <= 0:
+            raise BadInput("tuning.gather.fish_initial phải là số nguyên dương")
+    elif isinstance(fish, list) and len(fish) == 6:
+        seen = set()
+        for f in fish:
+            if not isinstance(f, dict) or not isinstance(f.get("id"), str) or f["id"] in seen:
+                raise BadInput("tuning.gather.fish_initial: mỗi đàn cần id duy nhất")
+            seen.add(f["id"])
+            if f.get("kind") not in fy:
+                raise BadInput(f"tuning.gather.fish_initial.{f['id']}: kind phải thuộc fish_yield")
+            _pos_in(f"gather.fish_initial.{f['id']}.pos", f.get("pos"), b, ("x", "d"))
+            if f["pos"][1] <= g["surface_depth"]:
+                raise BadInput(f"tuning.gather.fish_initial.{f['id']}: đàn cá phải ở dưới nước")
+    else:
+        raise BadInput("tuning.gather.fish_initial phải là số nguyên dương (v1.1) hoặc mảng 6 đàn (v1.0)")
 
 
 def validate_tuning(t):

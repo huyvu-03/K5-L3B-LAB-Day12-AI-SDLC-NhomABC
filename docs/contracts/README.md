@@ -86,3 +86,16 @@ Mỗi dòng event: `{"type":"event","tick":<k+1>,"phase":"gather"|"quan","name":
 - Ngẫu nhiên đi qua `Streams` (`chonoi/rng.py`), không dùng `random` toàn cục / đồng hồ hệ thống.
 - Sắp thực thể bằng `ids.sort_by_id` (tiền tố, hậu tố số, id gốc: `F2` trước `F10`), cấp id bằng `IdAllocator`.
 - Mọi tọa độ xuất tối đa 3 chữ số thập phân (do `jsonl.py` định dạng); tính khoảng cách/giá trước khi định dạng.
+
+---
+
+## 6. Nâng cấp Contract v1.1 (Phase 2 — `Ticket02.md`)
+- **Manifest**: `contract_version: "1.1"`, bổ sung 2 nguyên liệu mới (`ca_keo`, `keo_neo` → `KINDS_P2` 6 loại), nút `N5/N6`, 3 món mới (`canh_chua_ca_loc`, `ca_keo_nuong`, `lau_mam` → 6 món), bếp `B2`, bàn `T2–T4`, `fish_initial: 8` + tham số cá bơi/sinh, `monsters` (`ca_sau` `M1`, `M2`), `day_plan` D1–D5, `shop` (`max_ticks: 600`, nâng cấp `oxygen`/`hp`).
+- **CLI**: mở `--mode day` kèm `--days <1..5>` (mặc định `1`, chỉ dùng với `day`).
+- **Inputs (`BUTTONS_V11`)**: thêm nút boolean `pause`, `shop_done` (cạnh lên) và chuỗi `buy` (chỉ chạy tại đúng frame khai báo, không kế thừa).
+- **Scenario v1.1**:
+  - Mode `day` nhận các khối `day`, `gather`, `quan`. Khối `day` nhận `{money, earned, reputation, upgrades, day_plan}` (`0 <= money <= earned`). **Cấm** khai `quan.stock` và `quan.reputation` trong `day`.
+  - `gather.fish[]` thêm `age_ticks`; `gather.monsters[]` nhận `{id, kind, pos, waypoints, target_idx, state, state_ticks_left, recoil_dir}`.
+- **Events mới v1.1**: `monster_hit`, `fish_spawned`, `faint` (`cause: "monster"`), `day_start`, `day_plan`, `phase_start`, `paused`, `resumed`, `bought`, `buy_failed`, `shop_end`.
+- **Snapshot mới v1.1**: thêm `state: "paused"`, `monsters[]` trong `gather`; chế độ `day` thêm `day`, `day_plan`, `upgrades`, `active_upgrades` và `days_completed` trong dòng `end`.
+

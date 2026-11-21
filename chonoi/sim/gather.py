@@ -82,13 +82,18 @@ class GatherSim:
                        "regrow_ticks": n.get("regrow_ticks", 0)} for n in src_nodes]
         if "fish" in scenario:
             src_fish = scenario["fish"]
-        elif self.random_fish:
-            src_fish = t["fish_initial"]
+        elif scenario.get("random_fish", True):
+            fi = t["fish_initial"]
+            if isinstance(fi, list):
+                src_fish = fi
+            else:
+                src_fish = self._spawn_initial_fish(int(fi), ids)
         else:
             src_fish = []
-        # Đàn cá: age_ticks đếm số bước đã tham gia bơi (mặc định 0)
+        # Đàn cá ban đầu; M2 sẽ mở rộng bơi & sinh theo lịch ở Phase 2.
         self.fish = [{"id": f["id"], "kind": f["kind"], "pos": [float(c) for c in f["pos"]],
-                      "heading_deg": f.get("heading_deg", 0), "age_ticks": f.get("age_ticks", 0)} for f in src_fish]
+                      "heading_deg": f.get("heading_deg", 0), "age_ticks": int(f.get("age_ticks", 0))}
+                     for f in src_fish]
         for coll in (self.nodes, self.fish):
             for e in coll:
                 ids.reserve(e["id"])
@@ -97,6 +102,43 @@ class GatherSim:
         self.reputation = tuning["quan"]["reputation_initial"]
         self.done = False
         self.reason = None
+
+    def _spawn_initial_fish(self, count: int, ids):
+        """Sinh `count` đàn cá đầu ca (v1.1) ở các điểm hình học khác nhau theo seed."""
+        r = self.rng.get("fish_spawn")
+        xs = self.t.get("fish_spawn_x", [15, 30, 45, 60, 75, 90])
+        depths_map = self.t.get("fish_spawn_depths", {"ca_linh": [5, 10], "ca_loc": [10, 16], "ca_keo": [24, 27]})
+        weights_map = self.t.get("fish_weights", {"ca_linh": 0.4, "ca_loc": 0.3, "ca_keo": 0.3})
+        kinds = sorted(weights_map.keys())
+        used_pts = set()
+        out = []
+        for _ in range(count):
+            avail = []
+            for k in kinds:
+                pts = [(x, d) for x in xs for d in depths_map.get(k, []) if (x, d) not in used_pts]
+                if pts:
+                    avail.append((k, pts))
+            if not avail:
+                break
+            total_w = sum(weights_map[k] for k, _ in avail)
+            pick = r.random() * total_w
+            acc = 0.0
+            chosen_k, chosen_pts = avail[-1]
+            for k, pts in avail:
+                acc += weights_map[k]
+                if pick <= acc:
+                    chosen_k, chosen_pts = k, pts
+                    break
+            pt = chosen_pts[r.randrange(len(chosen_pts))]
+            used_pts.add(pt)
+            out.append({
+                "id": ids.new("F"),
+                "kind": chosen_k,
+                "pos": [float(pt[0]), float(pt[1])],
+                "heading_deg": r.random() * 360.0,
+                "age_ticks": 0,
+            })
+        return out
 
     # --- giao diện cho runner -------------------------------------------------
     def inventory_items(self) -> dict:
